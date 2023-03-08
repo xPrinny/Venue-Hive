@@ -1,0 +1,177 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Navigation */
+.navbar {
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Banner section */
+.banner {
+    background-color: #f7f7f7;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.banner p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.banner img {
+    max-width: 100%;
+}
+
+/* News section */
+.news {
+    padding: 5rem 0;
+}
+
+.news h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.news .card {
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.news .card-body {
+    padding: 2rem;
+}
+
+.news .card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.news .card-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.news .text-muted {
+    font-size: 1rem;
+    color: #777;
+}
+
+/* Form section */
+.form {
+    padding: 5rem 0;
+}
+
+.form h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.form textarea {
+    height: 10rem;
+}
+
+.form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .news h2 {
+        font-size: 2rem;
+    }
+
+    .news .card-title {
+        font-size: 1.5rem;
+    }
+
+    .news .card-text {
+        font-size: 1rem;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form textarea {
+        font-size: 1rem;
+    }
+
+    .form input[type="submit"] {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
