@@ -546,9 +546,9 @@
 
     <!--Footer done-->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>
+    <!--<a href="#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>
     <i class="bi bi-arrow-up-short"></i>
-    </a>
+    </a>-- i put this in footer.inc.php to see how it goes>
 
 </body>
 
