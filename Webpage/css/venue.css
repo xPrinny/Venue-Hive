@@ -148,38 +148,38 @@
     }
   }
   
-  /*------/ Property Grid /-----*/
-  .property-grid .grid-option {
+  /*------/ Venue Grid /-----*/
+  .venue-grid .grid-option {
     text-align: right;
     margin-bottom: 2rem;
   }
   
-  .property-grid .grid-option .custom-select {
+  .venue-grid .grid-option .custom-select {
     border-radius: 0;
     width: 200px;
     border-color: #313131;
   }
   
-  .property-grid .grid-option .custom-select:hover,
-  .property-grid .grid-option .custom-select:active,
-  .property-grid .grid-option .custom-select:focus {
+  .venue-grid .grid-option .custom-select:hover,
+  .venue-grid .grid-option .custom-select:active,
+  .venue-grid .grid-option .custom-select:focus {
     border-color: #313131;
   }
   
-  .property-grid .grid-option .custom-select option {
+  .venue-grid .grid-option .custom-select option {
     border-color: #313131;
   }
   
-  /*------/ Property Single /-----*/
-  .gallery-property {
+  /*------/ Venue Single /-----*/
+  .gallery-venue {
     margin-bottom: 3rem;
   }
   
-  .property-price {
+  .venue-price {
     margin: 0 auto;
   }
   
-  .property-price .card-header-c {
+  .venue-price .card-header-c {
     padding: 0;
   }
   
@@ -198,26 +198,26 @@
   }
   
   @media (max-width: 767px) {
-    .property-agent {
+    .venue-agent {
       margin-top: 2.5rem;
     }
   }
   
-  .property-agent .title-agent {
+  .venue-agent .title-agent {
     font-weight: 600;
   }
   
-  .property-agent ul {
+  .venue-agent ul {
     line-height: 2;
     color: #000000;
   }
   
-  .property-agent .socials-a {
+  .venue-agent .socials-a {
     text-align: center;
   }
   
   @media (max-width: 991px) {
-    .property-contact {
+    .venue-contact {
       margin-top: 2.5rem;
     }
   }

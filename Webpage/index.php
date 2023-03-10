@@ -11,10 +11,10 @@
 </head>
 
 <body>
-    <!-- ======= Venue Search Section ======= -->
+    <!-- ======= Venue Search Section ======= 
     <div class="click-closed"></div>
 
-    <!--/ Form Search Start /-->
+    / Form Search Start /
     <div class="box-collapse">
         <div class="title-box-d">
             <h3 class="title-d">Search venue</h3>
@@ -37,6 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="city">City</label>
+                    <city filter>
                     <select class="form-control" id="city">
                         <option>All City</option>
                         <option>Alabama</option>
@@ -49,7 +50,7 @@
             </form>
         </div>
     </div>
-    <!-- End Venue Search Section -->
+     End Venue Search Section -->
 
     <?php 
     include "include/nav.inc.php";
@@ -453,106 +454,16 @@
 
     <!-- End #main -->
 
-    <!-- ======= Footer ======= -->
-    <section class="section-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-4">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">VenueHive</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <p class="w-text-a color-text-a">
-                                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                                sed aute irure.
-                            </p>
-                        </div>
-                        <div class="w-footer-a">
-                            <ul class="list-unstyled">
-                                <li class="color-a">
-                                    <span class="color-text-a">Phone .</span> contact@example.com
-                                </li>
-                                <li class="color-a">
-                                    <span class="color-text-a">Email .</span> +54 356 945234
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">The Company</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <div class="w-body-a">
-                                <ul class="list-unstyled">
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
-                                    </li>
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
-                                    </li>
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
-                                    </li>
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
-                                    </li>
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
-                                    </li>
-                                    <li class="item-list-a">
-                                        <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 section-md-t3">
-                    <div class="widget-a">
-                        <div class="w-header-a">
-                            <h3 class="w-title-a text-brand">International sites</h3>
-                        </div>
-                        <div class="w-body-a">
-                            <ul class="list-unstyled">
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">China</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
-                                </li>
-                                <li class="item-list-a">
-                                    <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!--footer-->
     <?php
     include "include/footer.inc.php";
     ?>
 
-    <!--Footer done-->
+    
 
-    <!--<a href="#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>
+   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>
     <i class="bi bi-arrow-up-short"></i>
-    </a>-- i put this in footer.inc.php to see how it goes>
+    </a>i put this in footer.inc.php to see how it goes-->
 
 </body>
 
