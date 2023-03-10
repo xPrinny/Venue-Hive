@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
-    <?php include "head.inc.php";
+    <?php
+    include "include/head.inc.php";
     ?>
+    <!-- Custom  CSS Files for the page -->
+<link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -48,7 +51,8 @@
     </div>
     <!-- End Venue Search Section -->
 
-    <?php include "nav.inc.php";
+    <?php 
+    include "include/nav.inc.php";
     ?>
 
     <!-- ======= Intro Section ======= -->
@@ -541,7 +545,7 @@
     </section>
 
     <?php
-    include "footer.inc.php";
+    include "include/footer.inc.php";
     ?>
 
     <!--Footer done-->
