@@ -99,6 +99,63 @@
                 </div>
             </div>
         </aside>
+        <div class="container px-5">
+            <?php 
+                function loadListings() // maybe separate the function code from this file later on
+                {
+                    global $listingName, $listingPrice, $listingTag, $username, $errorMsg, $success;
+                    // Create database connection.
+                    $config = parse_ini_file('/var/www/private/db-config.ini');
+                    $conn = new mysqli($config['servername'], $config['username'],
+                    $config['password'], $config['dbname']);
+                    // Check connection
+                    if ($conn->connect_error)
+                    {
+                        $errorMsg = "Connection failed: " . $conn->connect_error;
+                        $success = false;
+                    }
+                    else
+                    {
+                        // prepare statement. gets first n (10) listings from listings table
+                        $stmt = $conn->prepare("SELECT a.listingName, a.listingPrice, a.listingTag, b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId LIMIT 10;");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        if ($result->num_rows > 0)
+                        {
+                            $rows = array();
+                            // $count = 0;
+                            // $listingCount = 10; // modify accordingly to change number of listings shown on homepage
+                            while ($row = $result->fetch_assoc()) {
+                                $rows[] = $row;
+                                // $count++;
+                                // if ($count >= $listingCount) {
+                                //     break;
+                                // }
+                            }
+
+                            foreach ($rows as $row) {
+                                $listingName = $row["listingName"];
+                                $listingPrice = $row["listingPrice"];
+                                $listingTag = $row["listingTag"];
+                                $username = $row["username"];
+
+                                echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
+                            }
+                        }
+                        else
+                        {
+                            $errorMsg = "No listings in database!";
+                            $success = false;
+                        }
+                        $stmt->close();
+                    }
+                    $conn->close();
+                }
+
+                loadListings();
+            ?>
+        </div>
+
         <!-- App features section-->
         <section id="features">
             <div class="container px-5">
@@ -153,11 +210,11 @@
                                         <stop class="gradient-end-color" offset="100%"></stop>
                                     </linearGradient>
                                 </defs>
-                                <circle cx="50" cy="50" r="50"></circle></svg
-                            ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="50"></circle></svg>
+                                <svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
-                                <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
-                            ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+                                <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg>
+                            <svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
                             <div class="device-wrapper">
                                 <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
                                     <div class="screen bg-black">
