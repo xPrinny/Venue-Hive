@@ -27,6 +27,18 @@
         <?php include "navbar.php";?>
 
         <!-- Profile Information -->
+        <?php 
+            include "utils/loadDB.php";
+
+            if ($success) {
+                include "utils/getUser.php";
+            }
+            $conn->close();
+            $username = $result["username"];
+            $firstName = $result["firstName"];
+            $lastName = $result["lastName"];
+        ?>
+
         <header class="masthead">
             <div class="container px-5">
                 <div class="row gx-5">
@@ -34,7 +46,7 @@
                         <div class="card shadow" id="userProfile">
                             <img src="others/pfp.jpg" class="card-img-top rounded-circle" alt="...">
                             <div class="card-header text-white bg-gradient-primary-to-secondary text-center">
-                                <h5 data-editable class="card-title text-center">Username</h5>
+                                <h5 data-editable class="card-title text-center"><?php echo $username; ?></h5>
                             </div>
                             <div class="card-body">
                                 <div class="list-group list-group-flush">
@@ -50,15 +62,16 @@
                             <div class="card-body">
                                 <h5 class="card-title">Update Account</h5>
                                 <hr/>
+
                                 <form>
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputFirstName" class=" mb-2">First Name</label>
-                                            <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                                            <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" autocomplete="off" value=<?php echo "$firstName"; ?>>
                                         </div> 
                                         <div class="form-group col-md-5 mb-2">
                                             <label for="inputLastName" class=" mb-2">Last Name</label>
-                                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" autocomplete="off" value=<?php echo "$lastName"; ?>>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 mb-2">
@@ -89,26 +102,6 @@
                 </div>
             </div>
         </header>
-        <div class="container px-5">
-            <?php 
-//                include "utils/loadDB.php";
-//
-//                if ($success) {
-//                    include "utils/getTop10Item.php";
-//                }
-//
-//                $conn->close();
-//
-//                foreach ($rows as $row) {
-//                    $listingName = $row["listingName"];
-//                    $listingPrice = $row["listingPrice"];
-//                    $listingTag = $row["listingTag"];
-//                    $username = $row["username"];
-//
-//                    echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
-//                }
-            ?>
-        </div>
 
         <!-- Footer-->
         <?php include "footer.php";?>

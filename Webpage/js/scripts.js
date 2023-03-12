@@ -52,8 +52,8 @@ $('.card-header').on('click', '[data-editable]', function(){
   var $input = $('<input class="card-title text-center"/>').val($ele.text().replace('*', ''));
   $ele.replaceWith($input);
   var save = function(){;
-    var $p = $('<h5 data-editable class="card-title text-center" />').text($input.val() + "*");
-    document.getElementById("username").value = $input.val();
+    var $p = $('<h5 data-editable class="card-title text-center" />').text($input.val() + '*');
+    document.querySelector('input[id="username"]').value = $input.val();
     $input.replaceWith($p);
   };
 
