@@ -101,58 +101,22 @@
         </aside>
         <div class="container px-5">
             <?php 
-                function loadListings() // maybe separate the function code from this file later on
-                {
-                    global $listingName, $listingPrice, $listingTag, $username, $errorMsg, $success;
-                    // Create database connection.
-                    $config = parse_ini_file('/var/www/private/db-config.ini');
-                    $conn = new mysqli($config['servername'], $config['username'],
-                    $config['password'], $config['dbname']);
-                    // Check connection
-                    if ($conn->connect_error)
-                    {
-                        $errorMsg = "Connection failed: " . $conn->connect_error;
-                        $success = false;
-                    }
-                    else
-                    {
-                        // prepare statement. gets first n (10) listings from listings table
-                        $stmt = $conn->prepare("SELECT a.listingName, a.listingPrice, a.listingTag, b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId LIMIT 10;");
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        if ($result->num_rows > 0)
-                        {
-                            $rows = array();
-                            // $count = 0;
-                            // $listingCount = 10; // modify accordingly to change number of listings shown on homepage
-                            while ($row = $result->fetch_assoc()) {
-                                $rows[] = $row;
-                                // $count++;
-                                // if ($count >= $listingCount) {
-                                //     break;
-                                // }
-                            }
+                include "utils/loadDB.php";
 
-                            foreach ($rows as $row) {
-                                $listingName = $row["listingName"];
-                                $listingPrice = $row["listingPrice"];
-                                $listingTag = $row["listingTag"];
-                                $username = $row["username"];
-
-                                echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
-                            }
-                        }
-                        else
-                        {
-                            $errorMsg = "No listings in database!";
-                            $success = false;
-                        }
-                        $stmt->close();
-                    }
-                    $conn->close();
+                if ($success) {
+                    include "utils/getTop10Item.php";
                 }
 
-                loadListings();
+                $conn->close();
+
+                foreach ($rows as $row) {
+                    $listingName = $row["listingName"];
+                    $listingPrice = $row["listingPrice"];
+                    $listingTag = $row["listingTag"];
+                    $username = $row["username"];
+
+                    echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
+                }
             ?>
         </div>
 
