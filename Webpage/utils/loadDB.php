@@ -1,5 +1,4 @@
 <?php
-    $success = true;
     // Create database connection.
     $config = parse_ini_file('/var/www/private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'],
@@ -10,4 +9,6 @@
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     }
+    $success = true;
 ?>
+asdasd

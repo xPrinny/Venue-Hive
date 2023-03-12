@@ -11643,3 +11643,39 @@ footer a:hover, footer a:active, footer a:focus {
     width: 100vw;
     height: 100vh;
 }
+
+/*.card-img-top {
+  background: -webkit-linear-gradient(#5ea7eb, #438dd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-top: -10%;
+}*/
+
+.card-img-top  {
+  height: 7.5rem;
+  width: 7.5rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-header {
+    padding-top: 5rem;
+}
+
+#userProfile {
+    margin-top: 5rem;
+}
+
+.form-inline {
+    display: flex;
+}
+
+.hr-med {
+    width: 90%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
