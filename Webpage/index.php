@@ -101,12 +101,12 @@
         </aside>
         <div class="container px-5">
             <?php 
+                global $listingName, $listingPrice, $listingTag, $username;
                 include "utils/loadDB.php";
 
                 if ($success) {
                     include "utils/getTop10Item.php";
                 }
-
                 $conn->close();
 
                 foreach ($rows as $row) {
