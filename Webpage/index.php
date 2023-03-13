@@ -101,7 +101,7 @@
         </aside>
         <div class="container px-5">
             <?php 
-                global $listingName, $listingPrice, $listingTag, $username;
+                global $listingId, $listingName, $listingPrice, $listingTag, $username;
                 include "utils/loadDB.php";
 
                 if ($success) {
@@ -110,12 +110,13 @@
                 $conn->close();
 
                 foreach ($rows as $row) {
+                    $listingId = $row["listingId"];
                     $listingName = $row["listingName"];
                     $listingPrice = $row["listingPrice"];
                     $listingTag = $row["listingTag"];
                     $username = $row["username"];
 
-                    echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
+                    echo "<br><a href ='listing.php?listingId=" . $listingId . "'>Listing Name: " . $listingName . "</a><br>Price: " . $listingPrice . "<br>Tags: " . $listingTag . "<br>Host Username: " . $username . "<br><br>";
                 }
             ?>
         </div>
