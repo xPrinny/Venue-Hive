@@ -51,18 +51,16 @@
                             <div class="card-body">
                                 <div class="list-group list-group-flush">
                                     <a href="#" class="list-group-item list-group-item-action active" id="item1">Update Account</a>
-                                    <a href="#" class="list-group-item list-group-item-action" id="item2">Account Settings</a>
-                                    <a href="#" class="list-group-item list-group-item-action" id="item3">Delete Account</a>
+                                    <a href="#" class="list-group-item list-group-item-action" id="item2">Account Preference</a>
                                 </div>
                             </div>
                         </div>  
                     </div>
                     <div class="col-lg-9">
                         <div class="card shadow" id="userProfile">
-                            <div class="card-body">
+                            <div class="card-body" id="updateAccount">
                                 <h5 class="card-title">Update Account</h5>
                                 <hr/>
-
                                 <form>
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
@@ -96,6 +94,24 @@
                                     <input hidden type="text" class="form-control" id="username"><br>
                                     <button type="submit" class="btn btn-primary">Update!</button>
                                 </form>
+                            </div>
+                            <div class="card-body" id="accountSettings" style="display: none;">
+                                <h5 class="card-title">Account Preference</h5><hr>
+                                <form>
+                                    <div class="form-check">
+                                        <p><u>Newsletter</u></p>
+                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
+                                        <label class="form-check-label" for="newsletterCheck">
+                                          Join our newsletter to stay up to date with the latest news and updates to our site.
+                                        </label>
+                                    </div>
+                                    <br><br>
+                                    <button type="submit" class="btn btn-primary">Update Preference</button>
+                                </form>
+                                <hr class="hr-med">
+                                <label for="accountDelete" class=" mb-2">Account deletion</label><br>
+                                Are you sure you want to delete your whole account? This action cannot be undone and you'll lose everything you have gathered in your account.<br><br>
+                                <button type="submit" class="btn btn-danger">Delete Account</button>
                             </div>
                         </div>
                     </div>
