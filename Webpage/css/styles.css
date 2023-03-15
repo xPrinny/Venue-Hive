@@ -11711,6 +11711,11 @@ footer a:hover, footer a:active, footer a:focus {
     background: #392c00;
 }
 
+.bg-customYellow {
+    color: #392c00;
+    background-color: #ffbf24;
+}
+
 .ccForm {
     width: auto;
     display: initial;

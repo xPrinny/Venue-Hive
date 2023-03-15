@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <title>Venue Hive - Home</title>
     <?php include "head.inc.php"; ?>
 </head>
 
 <body id="page-top">
-
     <!-- Navigation-->
     <?php include "navbar.php"; ?>
+
+    <!-- Login Modal-->
+    <?php include "login.php"; ?>
 
     <!-- Carousel -->
     <header class="masthead">
