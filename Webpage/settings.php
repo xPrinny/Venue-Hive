@@ -45,7 +45,7 @@
                     <div class="col-lg-3">
                         <div class="card shadow" id="editProfileName">
                             <img src="others/pfp.jpg" class="card-img-top-icon rounded-circle" alt="...">
-                            <div class="card-header text-white bg-gradient-primary-to-secondary text-center">
+                            <div class="card-header text-white bg-customBrown text-center">
                                 <h5 data-editable class="card-title text-center"><?php echo $username; ?><i class="bi bi-pencil-square fs-6 ms-1"></i></h5>
                             </div>
                             <div class="card-body">

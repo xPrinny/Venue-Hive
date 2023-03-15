@@ -48,8 +48,8 @@
                     <div class="col-lg-3">
                         <div class="card shadow" id="userProfile">
                             <img src="others/pfp.jpg" class="card-img-top-icon rounded-circle" alt="...">
-                            <div class="card-header text-white bg-gradient-primary-to-secondary text-center">
-                                <h5 data-editable class="card-title text-center"><?php echo $username; ?></h5>
+                            <div class="card-header text-white bg-customBrown text-center">
+                                <h5 data-editable class="card-title text-center "><?php echo $username; ?></h5>
                             </div>
                             <div class="card-body">
                                 <div class="list-group list-group-flush">
