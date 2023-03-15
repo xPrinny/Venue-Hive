@@ -6530,12 +6530,17 @@ textarea.form-control-lg {
   z-index: 1030;
 }
 
-.fixed-bottom {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1030;
+@media (min-width: 1000px) {
+    .fixed-bottom {
+        display: block;
+    }
+    .fixed-bottom {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+    }
 }
 
 .sticky-top {
@@ -11668,14 +11673,27 @@ footer a:hover, footer a:active, footer a:focus {
     margin-top: 5rem;
 }
 
-.form-inline {
-    display: flex;
+@media (min-width: 700px) {
+    .form-inline {
+        display: block;
+    }
+    .form-inline {
+        display: flex;
+    }
 }
 
 .hr-med {
     width: 90%;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hr-sm {
+    width: 70%;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -11691,4 +11709,17 @@ footer a:hover, footer a:active, footer a:focus {
 .bg-customBrown {
     color: #ffbf24;
     background: #392c00;
+}
+
+.ccForm {
+    width: auto;
+    display: initial;
+}
+
+#creditCardInfo {
+    padding-top: 0.5rem;
+}
+
+.itemBorderless {
+    border: none;
 }

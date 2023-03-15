@@ -60,11 +60,11 @@ $('.card-body a').click(function(event) {
     }
 });
 
-$('#editProfileName .card-header').on('click', '[data-editable]', function(){
+$('#editProfileName .card-header').on('click', '[data-editable]', function() {
   var $ele = $(this);
   var $input = $('<input class="card-title text-center"/>').val($ele.text().replace('*', ''));
   $ele.replaceWith($input);
-  var save = function(){;
+  var save = function() {
     var $p = $('<h5 data-editable class="card-title text-center" />').text($input.val() + '*').append('<i class="bi bi-pencil-square fs-6 ms-1"></i>');
     document.querySelector('input[id="username"]').value = $input.val();
     $input.replaceWith($p);
@@ -73,3 +73,13 @@ $('#editProfileName .card-header').on('click', '[data-editable]', function(){
   $input.one('blur', save).focus();
 });
 
+// Checkout page
+$("input[name='paymentRadio']").change(function(event) {
+    if (event.target.id === "creditCard") {
+        $('#creditCardInfo').show();
+        $('#paymentFormBtn').attr("form", "ccForm");
+    } else if (event.target.id === "cashOnDelivery") {
+        $('#creditCardInfo').hide();
+        $('#paymentFormBtn').attr("form", "codForm");
+    }
+});

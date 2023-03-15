@@ -22,21 +22,20 @@
             crossorigin="anonymous"></script>
     </head>
     <body id="page-top">
-        
         <!-- Navigation-->
         <?php include "navbar.php";?>
 
         <!-- Profile Information -->
         <?php 
-//            include "utils/loadDB.php";
-//
-//            if ($success) {
-//                include "utils/getUser.php";
-//            }
-//            $conn->close();
-//            $username = $result["username"];
-//            $firstName = $result["firstName"];
-//            $lastName = $result["lastName"];
+            include "utils/loadDB.php";
+
+            if ($success) {
+                include "utils/getUser.php";
+            }
+            $conn->close();
+            $username = $result["username"];
+            $firstName = $result["firstName"];
+            $lastName = $result["lastName"];
         ?>
 
         <header class="masthead">
