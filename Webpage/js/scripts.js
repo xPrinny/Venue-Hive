@@ -72,3 +72,4 @@ $('#editProfileName .card-header').on('click', '[data-editable]', function(){
 
   $input.one('blur', save).focus();
 });
+
