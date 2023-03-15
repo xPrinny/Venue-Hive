@@ -44,24 +44,28 @@ $('.carousel').on('slid.bs.carousel', function () {
 
 // Setting page
 $('.card-body a').click(function(event) {
+    console.log(event);
     $('.card-body .list-group-item').removeClass('active');
     if (event.target.id === "item1") {
                 $('.col-lg-9 .card-body').hide();
                 $('.card-body #item1.list-group-item').addClass('active');
                 $('.col-lg-9 #updateAccount.card-body').show();
+                $('#itemListings.card-body').show();
+                $('#card-body-text.card-body').show();
     } else if (event.target.id === "item2") {
                 $('.col-lg-9 .card-body').hide();
                 $('.card-body #item2.list-group-item').addClass('active');
                 $('.col-lg-9 #accountSettings.card-body').show();
+                $('.col-lg-9 #reviewListings.card-body').show();
     }
 });
 
-$('.card-header').on('click', '[data-editable]', function(){
+$('#editProfileName .card-header').on('click', '[data-editable]', function(){
   var $ele = $(this);
   var $input = $('<input class="card-title text-center"/>').val($ele.text().replace('*', ''));
   $ele.replaceWith($input);
   var save = function(){;
-    var $p = $('<h5 data-editable class="card-title text-center" />').text($input.val() + '*');
+    var $p = $('<h5 data-editable class="card-title text-center" />').text($input.val() + '*').append('<i class="bi bi-pencil-square fs-6 ms-1"></i>');
     document.querySelector('input[id="username"]').value = $input.val();
     $input.replaceWith($p);
   };

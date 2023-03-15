@@ -11651,7 +11651,7 @@ footer a:hover, footer a:active, footer a:focus {
   padding-top: -10%;
 }*/
 
-.card-img-top  {
+.card-img-top-icon  {
   height: 7.5rem;
   width: 7.5rem;
   position: absolute;
@@ -11664,7 +11664,7 @@ footer a:hover, footer a:active, footer a:focus {
     padding-top: 5rem;
 }
 
-#userProfile {
+#editUserProfile, #editProfileName {
     margin-top: 5rem;
 }
 
@@ -11678,4 +11678,12 @@ footer a:hover, footer a:active, footer a:focus {
     margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+#userProfile {
+    margin-top: 1rem;
+}
+
+.card-img-thumbnail {
+    height: 11rem;
 }
