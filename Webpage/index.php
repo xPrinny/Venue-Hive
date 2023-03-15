@@ -225,8 +225,11 @@
         </div>
     </section>
     <!-- Footer-->
-    <?php include "footer.php"; ?>
-
+    <?php include "footer.php";?>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
     <!-- Login Modal-->
     <?php include "login.php"; ?>
 </body>
