@@ -76,7 +76,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-xl-8">
                         <div class="h2 fs-1 text-white mb-4">"Description of our site??"</div>
-                        <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
+                        <img src="assets/img/VenueHiveLogo.png" alt="..." style="width: 50%" />
                     </div>
                 </div>
             </div>
