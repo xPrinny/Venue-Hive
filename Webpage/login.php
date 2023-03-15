@@ -13,8 +13,13 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
+          <form id="contactForm" data-sb-form-api-token="API_TOKEN"> 
+          <p>
+          For new members, please sign up for a new account
+          <a href="register.php">here</a>.
+        </p>
+
         <form action="process_login.php" method="get">
-          <form id="contactForm" data-sb-form-api-token="API_TOKEN">
 
             <!-- Email address input-->
             <div class="form-floating mb-3">

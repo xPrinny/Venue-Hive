@@ -11,9 +11,16 @@
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#">Item 2</a></li>
             </ul>
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                <!--<ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Login</a>
+                    </li>
+                </ul>-->
+
                 <span class="d-flex align-items-center">
-                    <i class="bi-chat-text-fill me-2"></i>
-                    <span class="small">Login</span>
+                    <iclass="bi-chat-text-fill me-2"></i>
+                        <span class="small" href="login.php">Login</span>
+
                 </span>
             </button>
         </div>

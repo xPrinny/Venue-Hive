@@ -79,7 +79,7 @@ include "head.inc.php";
     </head>
 
 <?php
-include "nav.inc.php";
+include "navbar.php";
 ?>
     <main class="container">
         <hr>
@@ -98,7 +98,7 @@ if ($success) {
     </main>
     <br>
 <?php
-include "footer.inc.php";
+include "footer.php";
 ?>
 
 </html>
