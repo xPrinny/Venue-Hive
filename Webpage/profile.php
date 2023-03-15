@@ -17,11 +17,13 @@
 
             if ($success) {
                 include "utils/getUser.php";
+                $username = $result["username"];
+                $firstName = $result["firstName"];
+                $lastName = $result["lastName"];
+                
+                include "utils/getReviews.php";
             }
             $conn->close();
-            $username = $result["username"];
-            $firstName = $result["firstName"];
-            $lastName = $result["lastName"];
         ?>
 
         <header class="masthead">
@@ -78,22 +80,29 @@
                                 </div>
                             </div>
                             <div class="card-body" id="reviewListings" style="display: none;">
-                                <h5 class="card-title">Account Preference</h5><hr>
-                                <form>
-                                    <div class="form-check">
-                                        <p><u>Newsletter</u></p>
-                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
-                                        <label class="form-check-label" for="newsletterCheck">
-                                          Join our newsletter to stay up to date with the latest news and updates to our site.
-                                        </label>
-                                    </div>
-                                    <br><br>
-                                    <button type="submit" class="btn btn-primary">Update Preference</button>
-                                </form>
-                                <hr class="hr-med">
-                                <label for="accountDelete" class="mb-2">Account deletion</label><br>
-                                Are you sure you want to delete your whole account? This action cannot be undone and you'll lose everything you have gathered in your account.<br><br>
-                                <button type="submit" class="btn btn-danger">Delete Account</button>
+                                <h5 class="card-title">Reviews</h5><hr/>
+                                <?php
+                                    foreach ($rows as $row) {
+                                        $reviewOwnerId = $row["reviewOwnerId"];
+                                        $ratingStar = $row["ratingStar"];
+                                        $ratingComment = $row["ratingComment"];
+                                        $y = 0;
+
+                                        echo '<div class="p-3">';
+
+                                        for($x=0; $x<5; $x++) {
+                                            if ($y < $ratingStar) {
+                                                echo '<i class="bi bi-star-fill"></i>';
+                                            } else {
+                                                echo '<i class="bi bi-star"></i>';
+                                            }
+                                            $y++;
+                                        }
+                                        echo '<br>' . $ratingComment . '</div>';
+
+                                        echo '<hr class="hr-sm">';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

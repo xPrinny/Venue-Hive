@@ -17,10 +17,10 @@
 
             if ($success) {
                 include "utils/getItem.php";
+                $listingName = $result["listingName"];
+                $listingPrice = $result["listingPrice"];
             }
             $conn->close();
-            $listingName = $result["listingName"];
-            $listingPrice = $result["listingPrice"];
         ?>
 
         <header class="masthead">

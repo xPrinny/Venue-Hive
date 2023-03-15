@@ -17,12 +17,12 @@
 
             if ($success) {
                 include "utils/getUser.php";
+                $username = $result["username"];
+                $firstName = $result["firstName"];
+                $lastName = $result["lastName"];
+                $email = $result["email"];
             }
             $conn->close();
-            $username = $result["username"];
-            $firstName = $result["firstName"];
-            $lastName = $result["lastName"];
-            $email = $result["email"];
         ?>
 
         <header class="masthead">
@@ -78,7 +78,7 @@
                                         <input type="password" class="form-control" id="inputOldPassword" placeholder="Old Password">
                                     </div>
                                     <input hidden type="text" class="form-control" id="username"><br>
-                                    <button type="submit" class="btn btn-primary">Update!</button>
+                                    <button type="submit" class="btn btn-primary">Update Profile</button>
                                 </form>
                             </div>
                             <div class="card-body" id="accountSettings" style="display: none;">
@@ -91,7 +91,7 @@
                                           Join our newsletter to stay up to date with the latest news and updates to our site.
                                         </label>
                                     </div>
-                                    <br><br>
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Update Preference</button>
                                 </form>
                                 <hr class="hr-med">
