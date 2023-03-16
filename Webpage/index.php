@@ -79,7 +79,7 @@
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-xl-8">
-                    <div class="h2 fs-1 text-white mb-4">"Description of our site??"</div>
+                    <div class="h2 fs-2 text-white mb-4">Discover your perfect event space on VenueHive - book, rent, and earn today!</div>
                     <img src="assets/img/VenueHiveLogo.png" alt="..." style="width: 50%" />
                 </div>
             </div>

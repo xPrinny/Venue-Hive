@@ -48,7 +48,7 @@
             </div>
 
             <!-- Submit Button-->
-            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg" id="submitButton" type="submit">Submit</button></div>
           </form>
       </div>
     </div>
