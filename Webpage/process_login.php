@@ -2,11 +2,11 @@
 $errorMsg = "";
 $success = true;
 
-$fname = filter_input(INPUT_GET, 'fname', FILTER_SANITIZE_STRING);
-$lname = filter_input(INPUT_GET, 'lname', FILTER_SANITIZE_STRING);
+$fname = filter_input(INPUT_GET, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$lname = filter_input(INPUT_GET, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_EMAIL);
-$pwd = filter_input(INPUT_GET, 'pwd', FILTER_SANITIZE_STRING);
-$pwd_confirm = filter_input(INPUT_GET, 'pwd_confirm', FILTER_SANITIZE_STRING);
+$pwd = filter_input(INPUT_GET, 'pwd', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd_confirm = filter_input(INPUT_GET, 'pwd_confirm', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 /*
  * Helper function to authenticate the login.
