@@ -82,14 +82,24 @@
                             <div class="card-body" id="reviewListings" style="display: none;">
                                 <h5 class="card-title">Reviews</h5><hr/>
                                 <?php
+                                    $brCount = 1;
                                     foreach ($rows as $row) {
                                         $reviewOwnerId = $row["reviewOwnerId"];
                                         $ratingStar = $row["ratingStar"];
                                         $ratingComment = $row["ratingComment"];
+                                        $reviewOwner = $row["reviewOwner"];
+                                        $recievedUser = $row["recievedUser"];
+                                        $listingName = $row["listingName"];
                                         $y = 0;
 
                                         echo '<div class="p-3">';
-
+                                        echo '<u><a href="#">';
+                                        if ($reviewOwnerId == $user) {
+                                            echo $recievedUser . '</a></u> | review from Buzzers';
+                                        } else {
+                                            echo $reviewOwner . '</a></u> | review from Host (tbc)';
+                                        }
+                                        echo '<br>';
                                         for($x=0; $x<5; $x++) {
                                             if ($y < $ratingStar) {
                                                 echo '<i class="bi bi-star-fill"></i>';
@@ -98,9 +108,11 @@
                                             }
                                             $y++;
                                         }
-                                        echo '<br>' . $ratingComment . '</div>';
-
-                                        echo '<hr class="hr-sm">';
+                                        echo '<br>' . $ratingComment . '<br><br>' . $listingName . '</div>';
+                                        if ($brCount < count($rows)) {
+                                            echo '<hr class="hr-sm">';
+                                        }
+                                        $brCount++;
                                     }
                                 ?>
                             </div>

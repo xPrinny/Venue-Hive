@@ -1,7 +1,9 @@
    <?php 
     // Prepare statement that gets item information
-   $stmt = $conn->prepare("SELECT reviewOwnerId, ratingStar, ratingComment FROM reviews WHERE reviewOwnerId = " . filter_input(INPUT_GET, "u") .
-           " OR reviewRecieveId = " . filter_input(INPUT_GET, "u") . ";");
+   $user = filter_input(INPUT_GET, "u");
+   $stmt = $conn->prepare("SELECT reviewOwnerId, ratingStar, ratingComment, a.username as 'reviewOwner', b.username as 'recievedUser', c.listingName FROM reviews
+           INNER JOIN members a ON reviewOwnerId = a.memberId INNER JOIN members b ON reviewRecieveId = b.memberId INNER JOIN listings c ON reviewListId = c.listingId
+           WHERE reviewOwnerId = " . $user . " OR reviewRecieveId = " . $user);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
