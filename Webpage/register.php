@@ -4,6 +4,10 @@
 <head>
     <title>Register as Member</title>
     <?php include "head.inc.php"; ?>
+     <!-- Bootstrap core JS-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </head>
 
 <body>
@@ -14,51 +18,53 @@
 
     <header class="masthead">
         <div class="container px-5">
-            <div class="row gx-5 align-items-center card shadow">
-                <h1 class="card-title mt-4">Member Registration</h1>
-                <p>
-                    For existing members, please go to
-                    <a href="login.php">Log In</a>.
-                </p>
-                <form action="process_register.php" method="post" novalidate class="my-form">
-                    <div class="form-group mb-3">
-                        <label for="fname">First Name:</label>
-                        <input class="form-control" type="text" id="fname" maxlength="45" name="fname" placeholder="Enter first name">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="lname">Last Name:</label>
-                        <input class="form-control" type="text" id="lname" required maxlength="45" name="lname" placeholder="Enter last name">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="email">Email:</label>
-                        <input class="form-control" type="email" id="email" required name="email" placeholder="Enter email">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="pwd">Password:</label>
-                        <input class="form-control" type="password" id="pwd" required name="pwd" placeholder="Enter password">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="pwd_confirm">Confirm Password:</label>
-                        <input class="form-control" type="password" id="pwd_confirm" required name="pwd_confirm" placeholder="Confirm password">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-check-input" type="checkbox" name="agree">
-                        <label class="form-check-label ms-2" for="terms_check">
-                            I agree to terms and conditions.
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
+            <h1>Member Registration</h1>
+            <p>
+                For existing members, please go to
+                <a href="login.php">Log In</a>.
+            </p>
+            <form action="process_register.php" method="post" novalidate class="my-form">
+                <div class="form-group">
+                    <label for="fname">First Name:</label>
+                    <input class="form-control" type="text" id="fname" maxlength="45" name="fname" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name:</label>
+                    <input class="form-control" type="text" id="lname" required maxlength="45" name="lname" placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" id="username" required maxlength="45" name="lname" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" id="email" required name="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input class="form-control" type="password" id="pwd" required name="pwd" placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="pwd_confirm">Confirm Password:</label>
+                    <input class="form-control" type="password" id="pwd_confirm" required name="pwd_confirm" placeholder="Confirm password">
+                </div>
+                <div class="form-check">
+                    <label>
+                        <input type="checkbox" name="agree">
+                        Agree to terms and conditions.
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
     </header>
-</body>
     <!-- Footer-->
-    <?php include "footer.php";?>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <?php include "footer.php"; ?>
+
+
+</body>
+    
+   
 </html>

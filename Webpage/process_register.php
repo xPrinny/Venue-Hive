@@ -2,15 +2,21 @@
 $errorMsg = "";
 $success = true;
 
-$fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+$fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if (empty($fname)) {
     $errorMsg .= "First name is required.<br>";
     $success = false;
 }
 
-$lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+$lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if (empty($lname)) {
     $errorMsg .= "Last name is required.<br>";
+    $success = false;
+}
+
+$username = filter_input(INPUT_POST, 'username',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+if (empty($username)) {
+    $errorMsg .= "Username is required.<br>";
     $success = false;
 }
 
@@ -25,8 +31,8 @@ if (empty($email)) {
     }
 }
 
-$pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
-$pwd_confirm = filter_input(INPUT_POST, 'pwd_confirm', FILTER_SANITIZE_STRING);
+$pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd_confirm = filter_input(INPUT_POST, 'pwd_confirm', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if (empty($pwd) || empty($pwd_confirm)) {
     $errorMsg .= "Password and confirmation are required.<br>";
     $success = false;
@@ -39,7 +45,7 @@ if (empty($pwd) || empty($pwd_confirm)) {
     }
 
     if ($success) {
-        saveMemberToDB($fname, $lname, $email, $pwd_hashed);
+        saveMemberToDB($fname, $lname, $username, $email, $pwd_hashed);
     }
 }
 
@@ -50,7 +56,7 @@ function sanitize_input($data) {
     return $sanitized_data;
 }
 
-function saveMemberToDB($fname, $lname, $email, $pwd_hashed) {
+function saveMemberToDB($fname, $lname, $username, $email, $pwd_hashed) {
     $config = parse_ini_file('../../private/db-config.ini');
     $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
@@ -59,7 +65,7 @@ function saveMemberToDB($fname, $lname, $email, $pwd_hashed) {
         $success = false;
     } else {
         $stmt = $conn->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
+        $stmt->bind_param("ssss", $fname, $lname, $username, $email, $pwd_hashed);
         if (!$stmt->execute()) {
             $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
             $success = false;
