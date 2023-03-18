@@ -1,9 +1,10 @@
 <?php 
-    $listingId = $_GET['listingId'];
-
     // prepare statement. gets all info from listings table for relevant listing Id
-    $stmt = $conn->prepare("SELECT a.*,  b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId WHERE listingId = ?;");
-    $stmt->bind_param("s", $listingId);
+    $stmt = $conn->prepare("SELECT a.*,  b.lastName, c.listingName, c.listingPrice, c.imagePath FROM ((venuehive.bookings a 
+    INNER JOIN venuehive.members b on a.bookerId = b.memberId)
+    INNER JOIN venuehive.listings c on a.listingId = c.listingId)
+    WHERE a.bookingId = ?;");
+    $stmt->bind_param("s", $bookingId);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0)

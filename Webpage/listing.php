@@ -58,7 +58,7 @@
                     
                 ?>
 
-                <form action="booking.php" method="get" class="dateForm">
+                <form action="checkout.php" method="get" class="dateForm">
                     <div>
                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
                         <label for="bookingDate">Date:</label>

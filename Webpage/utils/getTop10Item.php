@@ -1,6 +1,6 @@
 <?php 
     // prepare statement. gets first n (10) listings from listings table
-    $stmt = $conn->prepare("SELECT a.listingId, a.listingName, a.listingPrice, b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId LIMIT 10;");
+    $stmt = $conn->prepare("SELECT a.listingId, a.listingName, a.listingInfo, a.listingPrice, b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId LIMIT 10;");
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0)
