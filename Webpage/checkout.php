@@ -28,29 +28,6 @@
                 $username = $row["username"];
         ?>
 
-        <?php 
-            // $listingId = $_GET['listingId'];
-            // $bookingDate = $_GET['bookingDate'];
-            
-            // global $listingName, $listingPrice, $username;
-            
-            // include "utils/loadDB.php";
-
-            // if ($success) {
-            //     include "utils/getListingInfo.php";
-            // }
-            // $conn->close();
-
-            // $listingName = $row["listingName"];
-            // $listingPrice = $row["listingPrice"];
-            // $username = $row["username"];
-
-            // echo "<br>Listing Id and Booking Date: " . $listingId . ", " . $bookingDate;
-            // echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Host Username: " . $username . "<br><br>";
-            
-            // to add post query upon submission to bookings database once db updated
-        ?>
-
         <header class="masthead">
             <div class="container px-5">
                 <div class="row gx-5">
@@ -80,27 +57,27 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="expirationInput" class="form-label" class="form-label">Name on card</label>
-                                            <input class="form-control" type="tel" placeholder="Name on card" title="Please enter the name on the Credit Card." required>
+                                            <input class="form-control" type="tel" placeholder="Name on card" title="Please enter the name on the Credit Card.">
                                         </div>
                                         <div class="form-inline">
                                             <div class="mb-3 col-lg-5">
                                                 <label for="expirationInput" class="form-label" class="form-label">Expiration Date (MM/YY)</label><br>
-                                                <input class="form-control ccForm" type="tel" minlength="2" maxlength="2" size="2" placeholder="MM" pattern="^[0-9]*$" title="Please enter the month of expiry" required> / <input class="form-control ccForm"    type="tel" minlength="2" maxlength="2" size="2" placeholder="YY" pattern="^[0-9]*$" title="Please enter the year of expiry (Last two digit)" required>
+                                                <input class="form-control ccForm" type="tel" minlength="2" maxlength="2" size="2" placeholder="MM" pattern="^[0-9]*$" title="Please enter the month of expiry"> / <input class="form-control ccForm"    type="tel" minlength="2" maxlength="2" size="2" placeholder="YY" pattern="^[0-9]*$" title="Please enter the year of expiry (Last two digit)">
                                             </div>
                                             <div class="mb-3 col-lg-5">
                                                 <label for="expirationInput" class="form-label" class="form-label">Card Verification Number (CVV)</label><br>   
-                                                <input class="form-control ccForm" type="tel" minlength="3" maxlength="3" size="3" placeholder="CVC" pattern="^[0-9]*$" title="Please enter the credit card verficiation number" required>
+                                                <input class="form-control ccForm" type="tel" minlength="3" maxlength="3" size="3" placeholder="CVC" pattern="^[0-9]*$" title="Please enter the credit card verficiation number">
                                             </div>
-                                            <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
-                                            <input type="hidden" name="bookingDate" value="<?php echo $bookingDate ?>">
-                                            <input type="hidden" name="paymentType" value="cc">
                                         </div>
+                                        <input type="hidden" name="cclistingId" value="<?php echo $listingId ?>">
+                                        <input type="hidden" name="ccbookingDate" value="<?php echo $bookingDate ?>">
+                                        <input type="hidden" name="ccpaymentType" value="cc">
                                     </form>
                                 </div>
                                 <form id="codForm" action="confirmation.php" method="get">
-                                    <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
-                                    <input type="hidden" name="bookingDate" value="<?php echo $bookingDate ?>">
-                                    <input type="hidden" name="paymentType" value="cod">
+                                    <input type="hidden" name="listingId" id="listingId" value="<?php echo $listingId ?>">
+                                    <input type="hidden" name="bookingDate" id="bookingDate" value="<?php echo $bookingDate ?>">
+                                    <input type="hidden" name="paymentType" id="paymentType" value="cod">
                                 </form>
                             </div>
                         </div>  
@@ -137,10 +114,10 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <script>
+<!--        <script>
             const cc = document.getElementById('ccForm');
             const cod = document.getElementById('codForm');
-            const submitButton = document.getElementById('submit-button');
+            const submitButton = document.getElementById('paymentFormBtn');
 
             submitButton.addEventListener('click', (event) => {
               event.preventDefault(); // prevent default form submission behavior
@@ -149,12 +126,12 @@
 
               if (selectedForm === 'ccForm') {
                 cc.submit();
-                window.location.href = 'form1-success.html'; // redirect to success page for form 1
+//                window.location.href = 'confirmation.php'; // redirect to success page for form 1
               } else if (selectedForm === 'codForm') {
                 cod.submit();
-                window.location.href = 'form2-success.html'; // redirect to success page for form 2
+//                window.location.href = 'confirmation.php'; // redirect to success page for form 2
               }
             });
-        </script>
+        </script>-->
     </body>
 </html>
