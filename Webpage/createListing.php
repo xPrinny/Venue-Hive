@@ -38,28 +38,36 @@
         <?php include "navbar.php";?>
         <header class="masthead">
             <div class="container px-5">
-                <form action="allListings.php" method="get" class="dateForm">
-                    <div>
-                        <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
-                        <label for="bookingDate">Date:</label>
-                        <input type="text" id="bookingDate" name="bookingDate" placeholder="Please select date">
-                    </div>
-                    <br>
-                    <div>
-                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" type="submit">
-                            <span class="d-flex align-items-center">
-                            <i class="bi bi-calendar2-check me-2"></i>
-                                <span class="small">Create Listing</span>
-                            </span>
-                        </button>
+
+                <form action="process_listing.php" method="post" novalidate class="my-form">
+                <div class="form-group">
+                    <label for="listingName">Listing Name:</label>
+                    <input class="form-control" type="text" id="listingName" maxlength="45" name="listingName" placeholder="Enter listing name">
+                </div>
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="image">
+                        <input type="submit" name="submit" value="Upload">
                     </div>
                 </form>
+                <div class="form-group">
+                    <label for="listingPrice">Listing Price:</label>
+                    <input class="form-control" type="text" id="listingPrice" required maxlength="45" name="listingPrice" placeholder="Enter listing price">
+                </div>
+                <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Create Listing</button>
+                </div>
 
                 <script>
                     flatpickr('#bookingDate', {
                         dateFormat: "Y-m-d",
                     });
                 </script>
+
+            
             </div>
 
             
