@@ -3,16 +3,13 @@
     <head>
         <title>Venue Hive - Listing</title>
         <?php include "head.inc.php"; ?>
-        <!-- JQuery 3.6.4-->
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-            crossorigin="anonymous"></script>	
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <?php include "navbar.php";?>
+        <?php include "login.php";?>
 
         <?php 
             global $listingId, $listingName, $listingPrice, $listingInfo, $listingTag, $username;
@@ -63,7 +60,7 @@
                                     <div>
                                         <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" type="submit">
                                             <span class="d-flex align-items-center">
-                                            <i class="bi bi-calendar2-check me-2"></i>
+                                            <i class="bi bi-calendar2-check me-2" required></i>
                                                 <span class="small">Book</span>
                                             </span>
                                         </button>
