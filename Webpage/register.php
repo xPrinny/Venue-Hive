@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input class="form-control" type="text" id="username" required maxlength="45" name="lname" placeholder="Enter username">
+                    <input class="form-control" type="text" id="username" required maxlength="45" name="username" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
