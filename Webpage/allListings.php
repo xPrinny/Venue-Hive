@@ -4,30 +4,7 @@
         <title>Venue Hive - Listings</title>
         <?php include "head.inc.php"; ?>
         <script src="js/scripts.js"></script>
-        <!-- jQuery UI library -->
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-        <!-- <script>
-            $(function() {
-                $("#search-bar").autocomplete({
-                    source: function(request, response) {
-                    $.ajax({
-                        url: "utils/searchBar.php",
-                        data: {
-                        term: request.term
-                        },
-                        dataType: "json",
-                        success: function(data) {
-                        response(data);
-                        }
-                    });
-                    }
-                });
-            });
-            $("form").on("submit", function(event) {
-            event.preventDefault();
-            });
-        </script> -->
+
     </head>
     <body id="page-top">
 
@@ -112,18 +89,16 @@
                                         global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc;
                                         include "utils/loadDB.php";
 
-                                        // if ($success) {
-                                        //     if(isset($_POST['search'])) {
-                                        //         include "utils/searchBar.php";
-                                        //     } elseif (!isset($_POST['search'])) {
-                                        //         include "utils/getAllListings.php";
-                                        //     }
-                                        // }
+                                        if ($success) {
+                                            if(isset($_POST['search'])) {
+                                                include "utils/searchBar.php";
+                                            } 
+                                             elseif (!isset($_POST['search'])) {
+                                                 include "utils/getAllListings.php";
+                                             }
+                                        }
 
-                                        include "utils/getAllListings.php";
                                         $conn->close();
-
-                                        // echo $filtervalues;
 
                                         foreach ($rows as $row) {
                                             $listingId = $row["listingId"];
@@ -152,7 +127,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <?php } echo $filtervalues;?>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
