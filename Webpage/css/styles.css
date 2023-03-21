@@ -11673,12 +11673,13 @@ footer a:hover, footer a:active, footer a:focus {
     margin-top: 5rem;
 }
 
+.form-inline {
+  display: flex;
+}
+
 @media (min-width: 700px) {
     .form-inline {
         display: block;
-    }
-    .form-inline {
-        display: flex;
     }
 }
 
@@ -11731,4 +11732,22 @@ footer a:hover, footer a:active, footer a:focus {
 
 .my-form .form-group {
   margin-bottom: 25px; /* adjust this value to increase/decrease spacing */
+}
+
+.loginAlert {
+  position: relative;
+  display: block;
+  z-index: 9999;
+  top: 5.4rem;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -5rem;
+  text-align: center;
+}
+
+@media (min-width: 1400px) {
+  .loginAlert {
+    width: 12%;
+  }
 }

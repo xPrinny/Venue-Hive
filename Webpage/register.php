@@ -20,8 +20,8 @@
         <div class="container px-5">
             <h1>Member Registration</h1>
             <p>
-                For existing members, please go to
-                <a href="login.php">Log In</a>.
+                For existing members, please
+                <a href="#" data-bs-toggle="modal" data-bs-target="#feedbackModal">Log In</a> instead.
             </p>
             <form action="process_register.php" method="post" novalidate class="my-form">
                 <div class="form-group">

@@ -1,6 +1,6 @@
 <?php 
     // Prepare statement that gets user
-    $stmt = $conn->prepare("SELECT username, firstName, lastName, email FROM members WHERE memberId= " . filter_input(INPUT_GET, "u") . ";");
+    $stmt = $conn->prepare("SELECT password FROM members WHERE username = '" . $username . "';");
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows == 0) {
