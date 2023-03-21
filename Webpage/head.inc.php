@@ -15,4 +15,12 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
-<?php session_start(); ?>
+<?php
+    session_start(); 
+
+    //  Session last for 1 hour modify (60*60 for time in seconds)
+    if (!empty($_SESSION['deleted_time']) && $_SESSION['deleted_time'] < time() - (60*60)) {
+        session_destroy();
+        session_start();
+    }
+?>

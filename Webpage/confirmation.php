@@ -11,6 +11,8 @@
         <!-- Login Modal-->
         <?php include "login.php"; ?>
 
+        <?php include "authCheck.php"; ?>
+
         <?php 
             global $bookingDate, $paymentType, $ccno;
 
