@@ -56,17 +56,17 @@
                                           <input class="form-control" type="tel" name="ccno" placeholder="XXXXXXXXXXXXXXXX" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$" title="Please enter a Credit Card number." required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="expirationInput" class="form-label" class="form-label">Name on card</label>
-                                            <input class="form-control" type="tel" placeholder="Name on card" title="Please enter the name on the Credit Card.">
+                                            <label for="nameInput" class="form-label" class="form-label">Name on card</label>
+                                            <input class="form-control" type="tel" placeholder="Name on card" title="Please enter the name on the Credit Card." required>
                                         </div>
                                         <div class="form-inline">
                                             <div class="mb-3 col-lg-5">
                                                 <label for="expirationInput" class="form-label" class="form-label">Expiration Date (MM/YY)</label><br>
-                                                <input class="form-control ccForm" type="tel" minlength="2" maxlength="2" size="2" placeholder="MM" pattern="^[0-9]*$" title="Please enter the month of expiry"> / <input class="form-control ccForm"    type="tel" minlength="2" maxlength="2" size="2" placeholder="YY" pattern="^[0-9]*$" title="Please enter the year of expiry (Last two digit)">
+                                                <input class="form-control ccForm" type="tel" minlength="2" maxlength="2" size="2" placeholder="MM" pattern="^[0-9]*$" title="Please enter the month of expiry" required> / <input class="form-control ccForm" type="tel" minlength="2" maxlength="2" size="2" placeholder="YY" pattern="^[0-9]*$" title="Please enter the year of expiry (Last two digit)" required>
                                             </div>
                                             <div class="mb-3 col-lg-5">
-                                                <label for="expirationInput" class="form-label" class="form-label">Card Verification Number (CVV)</label><br>   
-                                                <input class="form-control ccForm" type="tel" minlength="3" maxlength="3" size="3" placeholder="CVC" pattern="^[0-9]*$" title="Please enter the credit card verficiation number">
+                                                <label for="verificationInput" class="form-label" class="form-label">Card Verification Number (CVV)</label><br>   
+                                                <input class="form-control ccForm" type="tel" minlength="3" maxlength="3" size="3" placeholder="CVC" pattern="^[0-9]*$" title="Please enter the credit card verficiation number" required>
                                             </div>
                                         </div>
                                         <input type="hidden" name="cclistingId" value="<?php echo $listingId ?>">
@@ -114,24 +114,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-<!--        <script>
-            const cc = document.getElementById('ccForm');
-            const cod = document.getElementById('codForm');
-            const submitButton = document.getElementById('paymentFormBtn');
-
-            submitButton.addEventListener('click', (event) => {
-              event.preventDefault(); // prevent default form submission behavior
-
-              const selectedForm = document.querySelector('input[name="paymentRadio"]:checked').value;
-
-              if (selectedForm === 'ccForm') {
-                cc.submit();
-//                window.location.href = 'confirmation.php'; // redirect to success page for form 1
-              } else if (selectedForm === 'codForm') {
-                cod.submit();
-//                window.location.href = 'confirmation.php'; // redirect to success page for form 2
-              }
-            });
-        </script>-->
     </body>
 </html>
