@@ -24,6 +24,7 @@
             $listingName = $row["listingName"];
             $listingPrice = $row["listingPrice"];
             $listingInfo = $row["listingInfo"];
+            $listingImg = $row["imagePath"];
             $listingTag = $row["listingTag"];
             $username = $row["username"];            
         ?>
@@ -31,7 +32,7 @@
         <header class="masthead">
             <div class="container px-5">
                 <div class="listingImage">
-                    <img class="" src="assets/property-2.jpg" alt="<?php echo $listingId?>" width="100%" height="300" style="object-fit:cover;">
+                    <img class="" src=<?php echo $listingImg?> alt="<?php echo $listingId?>" width="100%" height="300" style="object-fit:cover;">
                 </div>
                 <br>
                 <div class="row gx-5">

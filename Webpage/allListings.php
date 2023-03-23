@@ -4,6 +4,8 @@
         <title>Venue Hive - Listings</title>
         <?php include "head.inc.php"; ?>
         <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     </head>
     <body id="page-top">
@@ -18,25 +20,39 @@
                     <div class="col-lg-3">
                         <div class="card shadow">
                             <div class="card-body" id="filters">
-                                <!-- <form action="searchBar.php" method="post">
-                                    <div class="form-group">
-                                        <input type="text" name="search-bar" id="search-bar" placeholder="Search...", autocomplete="on">
-                                    </div>
-                                    <input type="submit" name="submit" value="Submit">
-                                </form> -->
                                 <form action="" method="POST">
                                     <div class="input-group mb-3">
                                         <input type="text" name="search" value="<?php if(isset($_POST['search'])) {echo $_POST['search'];}?>" class="form-control" placeholder="Search...">
                                         <button type="submit" class="btn bg-customYellow">Search</button>
                                     </div>
                                 </form>
+                                <?php include "utils/loadDB.php"; ?>
                                 <h5>Filter Listings</h5>
+                                <hr>
+                                <h6 class="">Price</h6>
+                                <ul class="list-group">
+                                    <?php // $col = "price";
+//                                        include "utils/getFilters.php"; 
+                                        $query = mysqli_query($conn, "SELECT MIN(listingPrice) as min_price, MAX(listingPrice) as max_price FROM venuehive.listings");
+                                        $row = mysqli_fetch_array($query);
+                                        $min = (int) $row["min_price"];
+                                        $max = (int) $row["max_price"];
+                                    ?>
+                                    <li>
+                                        <div class="price-slider">
+                                            <input type="text" id="priceRange" name="priceRange" value="" />
+                                            <p id="priceRangeSelected"></P>
+                                        </div>
+                                    </li>
+                                </ul>
                                 <hr>
                                 <h6 class="">Location</h6>
                                 <ul class="list-group">
-                                    <?php $col = "location";
-                                    include "utils/getFilters.php"; 
-                                    // while($row = $result->fetch_assoc()){?>
+                                    <?php
+//                                    include "utils/getFilters.php";
+                                    $loc = "SELECT DISTINCT location FROM venuehive.listings ORDER BY location";   
+                                    $result = $conn->query($loc);
+                                    while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
@@ -44,14 +60,17 @@
                                             </label>
                                         </div>
                                     </li>
-                                    <?php //}?>
+                                    <?php }?>
                                 </ul>
                                 <hr>
                                 <h6 class="">Category</h6>
                                 <ul class="list-group">
-                                    <?php $col = "category";
-                                    include "utils/getFilters.php"; 
-                                    // while($row = $result->fetch_assoc()){?>
+                                    <?php
+//                                    include "utils/getFilters.php"; 
+//                                    getCategories();
+                                    $cat = "SELECT DISTINCT category FROM venuehive.listings ORDER BY category;";
+                                    $result = $conn->query($cat);
+                                    while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
@@ -59,22 +78,25 @@
                                             </label>
                                         </div>
                                     </li>
-                                    <?php //}?>
+                                    <?php }?>
                                 </ul>
                                 <hr>
                                 <h6 class="">Tags</h6>
                                 <ul class="list-group">
-                                    <?php $col = "tags";
-                                    include "utils/getFilters.php"; 
-                                    // while($row = $result->fetch_assoc()){?>
+                                    <?php
+//                                    include "utils/getFilters.php"; 
+//                                    getTags();
+                                    $tags = "SELECT DISTINCT tag FROM venuehive.Tags ORDER BY tag;";
+                                    $result = $conn->query($tags);
+                                    while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input product_check" value="<?php echo $row['tags'];?>" id="tags"><?php echo $row['tags'];?>
+                                                <input type="checkbox" class="form-check-input product_check" value="<?php echo $row['tag'];?>" id="tag"><?php echo $row['tag'];?>
                                             </label>
                                         </div>
                                     </li>
-                                    <?php //}?>
+                                    <?php }?>
                                 </ul>
                             </div>
                         </div>
@@ -86,7 +108,7 @@
                                 <hr>
                                 <div class="row align-items-start">
                                     <?php
-                                        global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc;
+                                        global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc, $listingImg;
                                         include "utils/loadDB.php";
 
                                         if ($success) {
@@ -104,6 +126,7 @@
                                             $listingId = $row["listingId"];
                                             $listingName = $row["listingName"];
                                             $listingPrice = $row["listingPrice"];
+                                            $listingImg = $row["imagePath"];
                                             $listingInfo = $row["listingInfo"];
 
                                             if(strlen($listingInfo) > 200){
@@ -115,7 +138,7 @@
                                     ?>
                                     <div class="col-lg-4">
                                         <div class="card">
-                                            <img src="assets/property-1.jpg" class="card-img-top card-img-thumbnail" alt="<?php echo $listingName?>">
+                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="<?php echo $listingName?>" style="object-fit:cover;">
                                             <a href ='listing.php?listingId=<?php echo $listingId?>' style="text-decoration: none; color:black">
                                             <div class="card-body" id="card-body-text">
                                                 <h6 class="bg-customYellow text-center rounded p-1"><?php echo $listingName;?></h6>
@@ -141,5 +164,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!--Plugin CSS file with desired skin-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+        <!--jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!--Plugin JavaScript file-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     </body>
 </html>
