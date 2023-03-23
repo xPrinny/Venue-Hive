@@ -12,7 +12,7 @@
         <?php include "login.php";?>
 
         <?php 
-            global $listingId, $listingName, $listingPrice, $listingInfo, $listingTag, $username;
+            global $listingId, $listingName, $listingPrice, $listingInfo, $listingTag, $userId, $username;
             include "utils/loadDB.php";
 
             if ($success) {
@@ -26,6 +26,7 @@
             $listingInfo = $row["listingInfo"];
             $listingImg = $row["imagePath"];
             $listingTag = $row["listingTag"];
+            $userId = $row["listingOwnerId"];
             $username = $row["username"];            
         ?>
 
@@ -39,10 +40,34 @@
                     <div class="col-lg-9">
                         <div class="card shadow" id="listingDesc">
                             <div class="card-body">
-                                <h3><?php echo $listingName?></h3>
+                                <div class="row">
+                                    <div class="col-lg-9">    
+                                        <h3><?php echo $listingName?></h3>
+                                    </div>
+                                    <?php
+                                        if($_SESSION['username'] === $username) {
+                                    ?>
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onclick="editListing.php" id="editListing" name="editListing">
+                                            <span class="d-flex align-items-center">
+                                                <i class="bi bi-pencil-square me-2"></i>
+                                                <span class="small">Edit</span>
+                                            </span>
+                                        </button>
+                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onclick="deleteListing.php" id="deleteListing" name="deleteListing">
+                                            <span class="d-flex align-items-center">
+                                                <i class="bi bi-trash me-2"></i>
+                                                <span class="small">Delete</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <?php } ?>
+                                </div>
                                 <h3 class="font-weight-bold">$<?php echo $listingPrice?></h3>
                                 <hr>
-                                <h5><?php echo $username?></h5>
+                                <a href="profile.php?u=<?php echo $userId?>" style="text-decoration: none; color:black">
+                                    <h5><?php echo $username?></h5>
+                                </a>
                                 <p><?php echo $listingInfo?></p>
                             </div>
                         </div>

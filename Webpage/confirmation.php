@@ -39,7 +39,7 @@
             include "utils/loadDB.php";
 
             if ($success) {
-                include "utils/temp.php";
+                include "utils/getBookedListing.php";
             }
             $conn->close();
 
