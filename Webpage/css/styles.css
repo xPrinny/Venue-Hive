@@ -11657,14 +11657,24 @@ footer a:hover, footer a:active, footer a:focus {
   padding-top: -10%;
 }*/
 
-.card-img-top-icon  {
+.card-img-top-icon {
+  height: 8rem;
+  width: 8rem;
+  position: absolute;
+  background: #6f5b14;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  clip-path: polygon(75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%, 25% 5%);
+}
+
+.card-img-top-icon img {
   height: 7.5rem;
   width: 7.5rem;
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 40%;
 }
+
 
 .card-header {
     padding-top: 5rem;
@@ -11675,12 +11685,12 @@ footer a:hover, footer a:active, footer a:focus {
 }
 
 .form-inline {
-  display: flex;
+  display: block;
 }
 
 @media (min-width: 700px) {
     .form-inline {
-        display: block;
+      display: flex;
     }
 }
 

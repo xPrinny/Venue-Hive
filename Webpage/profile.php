@@ -17,11 +17,21 @@
 
             if ($success) {
                 include "utils/getUser.php";
-                $username = $result["username"];
-                $firstName = $result["firstName"];
-                $lastName = $result["lastName"];
-                
-                include "utils/getReviews.php";
+                if ($success) {
+                    $firstName = $result["firstName"];
+                    $lastName = $result["lastName"];
+                    $profilePicture = $result["profilePicture"];
+                    
+                    include "utils/getReviews.php";
+                } else {
+                    echo ' <header class="masthead"><div class="container px-5 mt-4"><h2>Error!</h2>User does not exist.</div></header>';
+                    include "footer.php";
+                    echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                            <script src="js/scripts.js"></script>
+                            </body>
+                            </html>';
+                    die();
+                }
             }
             $conn->close();
         ?>
@@ -29,12 +39,14 @@
         <header class="masthead">
             <div class="container px-5">
                 <div class="banner">
-                    <img class="w-100 h-auto" src="assets/hiveBanner.png" alt="Hive banner"> 
+                    <img class="w-100 h-auto" src="assets/userprofile/defaultBanner.png" alt="Hive banner"> 
                 </div>
                 <div class="row gx-5">
                     <div class="col-lg-3">
                         <div class="card shadow" id="userProfile">
-                            <img src="others/pfp.jpg" class="card-img-top-icon rounded-circle" alt="...">
+                            <div class="card-img-top-icon">
+                                <img src="<?php echo $profilePicture; ?>" class="card-img-top-icon" alt="Profile Picture">
+                            </div>
                             <div class="card-header text-white bg-customBrown text-center">
                                 <h5 data-editable class="card-title text-center "><?php echo $username; ?></h5>
                             </div>
@@ -42,6 +54,11 @@
                                 <div class="list-group list-group-flush">
                                     <a href="#" class="list-group-item list-group-item-action active" id="item1">Listings</a>
                                     <a href="#" class="list-group-item list-group-item-action" id="item2">Reviews</a>
+                                    <?php
+                                        if ($username === $_SESSION['username']) {
+                                            echo '<a href="#" class="list-group-item list-group-item-action" id="item3">My Orders</a>';
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>  
@@ -84,7 +101,6 @@
                                 <?php
                                     $brCount = 1;
                                     foreach ($rows as $row) {
-                                        $reviewOwnerId = $row["reviewOwnerId"];
                                         $ratingStar = $row["ratingStar"];
                                         $ratingComment = $row["ratingComment"];
                                         $reviewOwner = $row["reviewOwner"];
@@ -94,7 +110,7 @@
 
                                         echo '<div class="p-3">';
                                         echo '<u><a href="#">';
-                                        if ($reviewOwnerId == $user) {
+                                        if ($reviewOwner == $user) {
                                             echo $recievedUser . '</a></u> | review from Buzzers';
                                         } else {
                                             echo $reviewOwner . '</a></u> | review from Host (tbc)';

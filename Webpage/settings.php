@@ -5,22 +5,27 @@
         <?php include "head.inc.php"; ?>
     </head>
     <body id="page-top">
+        <?php include "utils/authCheck.php"; ?>
+
         <!-- Navigation-->
         <?php include "navbar.php";?>
 
         <!-- Login Modal-->
         <?php include "login.php"; ?>
 
+
         <!-- Profile Information -->
         <?php 
             include "utils/loadDB.php";
+            $_SESSION['fromSetting'] = True;
 
             if ($success) {
                 include "utils/getUser.php";
-                $username = $result["username"];
                 $firstName = $result["firstName"];
                 $lastName = $result["lastName"];
                 $email = $result["email"];
+                $profilePicture = $result["profilePicture"];
+                $newsletter = $result["newsletter"];
             }
             $conn->close();
         ?>
@@ -30,7 +35,9 @@
                 <div class="row gx-5">
                     <div class="col-lg-3">
                         <div class="card shadow" id="editProfileName">
-                            <img src="others/pfp.jpg" class="card-img-top-icon rounded-circle" alt="...">
+                            <div class="card-img-top-icon">
+                                <img src="<?php echo $profilePicture; ?>" class="card-img-top-icon" alt="Profile Picture">
+                            </div>
                             <div class="card-header text-white bg-customBrown text-center">
                                 <h5 data-editable class="card-title text-center"><?php echo $username; ?><i class="bi bi-pencil-square fs-6 ms-1"></i></h5>
                             </div>
@@ -47,7 +54,7 @@
                             <div class="card-body" id="updateAccount">
                                 <h5 class="card-title">Update Account</h5>
                                 <hr/>
-                                <form>
+                                <form id="settingUpdate" action="utils/modifyAccount">
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputFirstName" class=" mb-2">First Name</label>
@@ -83,10 +90,11 @@
                             </div>
                             <div class="card-body" id="accountSettings" style="display: none;">
                                 <h5 class="card-title">Account Preference</h5><hr>
-                                <form>
+                                <form id="settingPrefence" action="utils/modifyAccount">
                                     <div class="form-check">
                                         <p><u>Newsletter</u></p>
-                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
+                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck"
+                                        <?php if ($newsletter) { echo 'checked'; } ?>>
                                         <label class="form-check-label" for="newsletterCheck">
                                           Join our newsletter to stay up to date with the latest news and updates to our site.
                                         </label>

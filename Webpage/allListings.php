@@ -114,7 +114,7 @@
                                                 $listingDesc = $listingInfo;
                                             }
                                     ?>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-4 mb-4">
                                         <div class="card">
                                             <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="<?php echo $listingName?>" style="object-fit:cover;">
                                             <a href ='listing.php?listingId=<?php echo $listingId?>' style="text-decoration: none; color:black">

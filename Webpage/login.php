@@ -6,7 +6,7 @@
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body border-0 p-4">
-          <form id="contactForm" action="/process_login" method="post"> 
+          <form id="contactForm" action="utils/processLogin" method="post"> 
             <p>
               For new members, please sign up for a new account
               <a href="register">here</a>.

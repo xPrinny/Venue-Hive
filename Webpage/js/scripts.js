@@ -64,6 +64,10 @@ $('.card-body a').click(function(event) {
         $('.card-body #item2.list-group-item').addClass('active');
         $('.col-lg-9 #accountSettings.card-body').show();
         $('.col-lg-9 #reviewListings.card-body').show();
+    } else if (event.target.id === "item3") {
+        $('.col-lg-9 .card-body').hide();
+        $('.card-body #item3.list-group-item').addClass('active');
+        // $('.col-lg-9 #accountSettings.card-body').show();
     }
 });
 
@@ -79,6 +83,34 @@ $('#editProfileName .card-header').on('click', '[data-editable]', function() {
 
   $input.one('blur', save).focus();
 });
+
+$('#settingUpdate').submit(function() {
+    var action = $(this).attr('action');
+    if (!EntryCheck()) return false;
+    $.ajax({
+        url  : action,
+        type : 'POST',
+        data : $('#settingUpdate, #settingPrefence').serialize(),
+        success : function() {
+            window.location.replace(action);
+        }
+    });
+    return false;
+});
+
+$('#settingPrefence').submit(function() {
+    var action = $(this).attr('action');
+    if (!EntryCheck()) return false;
+    $.ajax({
+        url  : action,
+        type : 'POST',
+        data : $('#settingUpdate, #settingPrefence').serialize(),
+        success : function() {
+            window.location.replace(action);
+        }
+    });
+    return false;
+});settingPrefence
 
 // Checkout page
 $("input[name='paymentRadio']").change(function(event) {

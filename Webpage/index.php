@@ -16,8 +16,10 @@
     <?php
         if ($_SESSION["loginStatus"] == "success") {
             echo '<div class="alert alert-success loginAlert" role="alert">Login Successful!</div>';
+            $_SESSION["loginStatus"] = null;
         } else if ($_SESSION["loginStatus"] == "fail") {
             echo '<div class="alert alert-danger loginAlert" role="alert">Login Failed!</div>';
+            $_SESSION["loginStatus"] = null;
         }
     ?>
 

@@ -7,17 +7,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                <!-- temporary links for ease of navigation, modify/remove if uw -->
-                <li class="nav-item"><a class="nav-link me-lg-3" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="allListings.php">View All Listings</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="createListing.php">Add New Listing</a></li>
-            </ul>
-            <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                <span class="d-flex align-items-center">
-                    <i class="bi-chat-text-fill me-2"></i>
-                    <span class="small">Login</span>
-                </span>
-            </button>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="allListings">View All Listings</a></li>
+                <?php if ($_SESSION['username'] != null) {?>
+                    <li class="nav-item"><a class="nav-link me-lg-3" href="createListing">Add New Listing</a></li>
+                    <?php echo '<li class="nav-item"><a class="nav-link me-lg-3" href="profile?u=' .
+                        $_SESSION['username'] . '">My Profile</a></li>' ?>
+                    <li class="nav-item"><a class="nav-link bi-gear me-lg-3" href="settings"></a></li>
+                    </ul>
+                    <?php $_SESSION['previousRedirect'] = $_SERVER['REQUEST_URI']; ?> 
+                    <a class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" href="utils/processLogout">
+                        <span class="d-flex align-items-center">
+                            <i class="bi-box-arrow-right me-2"></i>
+                            <span class="small">Logout</span>
+                        </span>
+                    </a>
+                <?php } else { ?>
+                    </ul>
+                    <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="d-flex align-items-center">
+                            <i class="bi-box-arrow-in-right me-2"></i>
+                            <span class="small">Login</span>
+                        </span>
+                    </button>
+                <?php }; ?>
         </div>
     </div>
 </nav>
