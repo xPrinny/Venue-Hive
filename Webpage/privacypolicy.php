@@ -14,16 +14,39 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
         body {
             background-image: url('assets/img/Outdoor-Balcony.jpg');
             background-size: cover;
         }
+        /* agree and disagree button*/
+        .buttons {
+            display: flex;
+            padding: 0 20px;
+            justify-content: space-evenly;
+        }
+        .btn {
+            height: 50px;
+            width: calc(505 - 6px);
+            border: 0;
+            border-radius: 6px;
+            font-size: 19px;
+            font-weight: 500;
+            color: #fff;
+            transition: .3s linear;
+            cursor: pointer;
+        }
+        .yellow-btn {
+            background-color: #ffbf24;
+        }
+
+        .gray-btn {
+            background-color: #282828;
+        }
+
+        .btn:hover {
+            opacity: .6;
+        }
     </style>
-
-
-
-
 </head>
 
 <body id="page-top">
