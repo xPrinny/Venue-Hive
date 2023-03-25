@@ -77,11 +77,11 @@
                                     <h5><?php echo $username?></h5>
                                 </a>
                                 <p><?php echo $listingInfo?></p>
-                                <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="listingTag" name="listingTag">
+                                <!-- <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="listingTag" name="listingTag">
                                             <span class="d-flex align-items-center">
                                                 <span class="small">Delete</span>
                                             </span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>
