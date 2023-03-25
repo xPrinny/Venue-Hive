@@ -65,7 +65,7 @@
                                         if($_SESSION['username'] === $username) {
                                     ?>
                                     <div class="col-lg-3">
-                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onclick="editListing.php" id="editListing" name="editListing">
+                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="editListing" name="editListing">
                                             <span class="d-flex align-items-center">
                                                 <i class="bi bi-pencil-square me-2"></i>
                                                 <span class="small">Edit</span>
@@ -97,6 +97,15 @@
                     <div class="col-lg-3">
                         <div class="card shadow" id="bookingForm">
                             <div class="card-body">
+                                <?php if (!isset($_SESSION['username'])) { ?>
+                                    <div>
+                                        <p>You must be logged in to make a booking</p>
+                                    </div>
+                                <?php } else if ($_SESSION['username'] === $username) { ?>
+                                    <div>
+                                        <p>You can't book your own listing!</p>
+                                    </div>
+                                <?php } else {?>
                                 <form action="checkout.php" method="post" id="dateForm">
                                     <div>
                                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
@@ -115,6 +124,7 @@
                                         </button>
                                     </div>
                                 </form>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
