@@ -29,34 +29,16 @@
                                 <?php include "utils/loadDB.php"; ?>
                                 <h5>Filter Listings</h5>
                                 <hr>
-                                <h6 class="">Price</h6>
-                                <ul class="list-group">
-                                    <?php // $col = "price";
-//                                        include "utils/getFilters.php"; 
-                                        $query = mysqli_query($conn, "SELECT MIN(listingPrice) as min_price, MAX(listingPrice) as max_price FROM venuehive.listings");
-                                        $row = mysqli_fetch_array($query);
-                                        $min = (int) $row["min_price"];
-                                        $max = (int) $row["max_price"];
-                                    ?>
-                                    <li>
-                                        <div class="price-slider">
-                                            <input type="text" id="priceRange" name="priceRange" value="" />
-                                            <p id="priceRangeSelected"></P>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <hr>
                                 <h6 class="">Location</h6>
                                 <ul class="list-group">
                                     <?php
-//                                    include "utils/getFilters.php";
                                     $loc = "SELECT DISTINCT location FROM venuehive.listings ORDER BY location";   
                                     $result = $conn->query($loc);
                                     while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input product_check" value="<?php echo $row['location'];?>" id="location"><?php echo $row['location'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['location'];?>" id="location"><?php echo $row['location'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -66,15 +48,13 @@
                                 <h6 class="">Category</h6>
                                 <ul class="list-group">
                                     <?php
-//                                    include "utils/getFilters.php"; 
-//                                    getCategories();
                                     $cat = "SELECT DISTINCT category FROM venuehive.listings ORDER BY category;";
                                     $result = $conn->query($cat);
                                     while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input product_check" value="<?php echo $row['category'];?>" id="category"><?php echo $row['category'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['category'];?>" id="category"><?php echo $row['category'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -84,15 +64,13 @@
                                 <h6 class="">Tags</h6>
                                 <ul class="list-group">
                                     <?php
-//                                    include "utils/getFilters.php"; 
-//                                    getTags();
                                     $tags = "SELECT DISTINCT tag FROM venuehive.Tags ORDER BY tag;";
                                     $result = $conn->query($tags);
                                     while($row = $result->fetch_assoc()){?>
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input product_check" value="<?php echo $row['tag'];?>" id="tag"><?php echo $row['tag'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['tag'];?>" id="tag"><?php echo $row['tag'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -103,10 +81,10 @@
                     </div>
                     <div class="col-lg-9">
                         <div class="card shadow">
-                            <div class="card-body" id="listings">
+                            <div class="card-body">
                                 <h5 class="card-title">View All Listings</h5>
                                 <hr>
-                                <div class="row align-items-start">
+                                <div class="row align-items-start" id="listings">
                                     <?php
                                         global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc, $listingImg;
                                         include "utils/loadDB.php";
@@ -170,5 +148,33 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--Plugin JavaScript file-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".listing_check").click(function(){
+
+                    var action = 'action';
+                    var location = filteredText('location');
+                    var category = filteredText('category');
+                    var tag = filteredText('tag');
+
+                    $.ajax({
+                        url: 'filterListings.php',
+                        method: 'POST',
+                        data:{action:action, location:location, category:category, tag:tag},
+                        success:function(response){
+                            $("#listings").html(response);
+                        }
+                    });
+                });
+
+                function filteredText(text_id) {
+                    var filterData = [];
+                    $('#' + text_id + ':checked').each(function() {
+                        filterData.push($(this).val());
+                    });
+                    return filterData;
+                }
+            });
+        </script>
     </body>
 </html>
