@@ -11,6 +11,8 @@
         <!-- Login Modal-->
         <?php include "login.php"; ?>
 
+        <?php include "authCheck.php"; ?>
+
         <!-- Profile Information -->
         <?php 
             $listingId = $_GET['listingId'];

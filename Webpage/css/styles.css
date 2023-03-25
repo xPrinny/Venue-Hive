@@ -12537,6 +12537,7 @@ footer a:focus {
   background-color: #f8f9fa;
   padding-top: 5rem;
   padding-bottom: 3rem;
+  min-height: 100vh;
 }
 
 .masthead .masthead-device-mockup {
