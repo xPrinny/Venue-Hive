@@ -31,3 +31,48 @@ if(isset($_FILES['images'])){
     }
 }
 ?>
+
+    if(isset($_POST["submit"])) {
+        $file = $_FILES["image"];
+        $fileType = strtolower(pathinfo($file["name"],PATHINFO_EXTENSION));
+        $allowTypes = array('jpg','jpeg','png');
+    
+    if(in_array($fileType, $allowTypes)){
+        if ($file["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+        }
+        else {
+            // proceed with file upload
+        }
+    }
+    else {
+        echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+    }
+    }
+
+    $fileName = uniqid('', true) . '.' . $fileType;
+    $targetDir = "uploads/";
+    $targetFile = $targetDir . $fileName;
+
+    if(move_uploaded_file($file["tmp_name"], $targetFile)){
+        echo "The file ".$fileName. " has been uploaded.";
+    }
+    else{
+        echo "Sorry, there was an error uploading your file.";
+    }
+
+    // connect to database
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // insert new record
+    $sql = "INSERT INTO assets (filename, filepath) VALUES ('$fileName', '$targetFile')";
+    if(mysqli_query($conn, $sql)){
+        echo "Record added to database.";
+    }
+    else{
+        echo "Error: " . mysqli_error($conn);
+    }
+
+    // close database connection
+    mysqli_close($conn);
+?>

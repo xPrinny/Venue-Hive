@@ -27,13 +27,21 @@
             $listingImg = $row["imagePath"];
             $listingTag = $row["listingTag"];
             $userId = $row["listingOwnerId"];
-            $username = $row["username"];            
+            $username = $row["username"];
         ?>
 
         <header class="masthead">
             <div class="container px-5">
                 <div class="listingImage">
-                    <img class="" src=<?php echo $listingImg?> alt="<?php echo $listingId?>" width="100%" height="300" style="object-fit:cover;">
+                    <div class="container">
+                        <div class="blur-bg">
+                            <img src="<?php echo $listingImg ?>">
+                        </div>
+                        <div class="listingImg-container">
+                            <img src="<?php echo $listingImg ?>" alt="<?php echo $listingId ?>" style="height:100%; object-fit:contain;">
+                            <img src="<?php echo $listingImg ?>" alt="<?php echo $listingId ?>" style="height:100%; object-fit:contain;">
+                        </div> 
+                    </div>
                 </div>
                 <br>
                 <div class="row gx-5">
@@ -69,15 +77,21 @@
                                     <h5><?php echo $username?></h5>
                                 </a>
                                 <p><?php echo $listingInfo?></p>
+                                <!-- <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="listingTag" name="listingTag">
+                                            <span class="d-flex align-items-center">
+                                                <span class="small">Delete</span>
+                                            </span>
+                                </button> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="card shadow" id="bookingForm">
                             <div class="card-body">
-                                <form action="checkout.php" method="get" id="dateForm">
+                                <form action="checkout.php" method="post" id="dateForm">
                                     <div>
                                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
+                                        <input type="hidden" name="listingPrice" value="<?php echo $listingPrice ?>">
                                         <label for="bookingDate">Date:</label>
                                         <!-- the input bar isnt responsive when window width less than 1198, need to find a fix -->
                                         <input type="text" id="bookingDate" name="bookingDate" placeholder="Please select date">
