@@ -17,17 +17,26 @@
 
             if ($success) {
                 include "utils/getListingInfo.php";
+                if ($success) {
+                    $listingId = $row["listingId"];
+                    $listingName = $row["listingName"];
+                    $listingPrice = $row["listingPrice"];
+                    $listingInfo = $row["listingInfo"];
+                    $listingImg = $row["imagePath"];
+                    $listingTag = $row["listingTag"];
+                    $userId = $row["listingOwnerId"];
+                    $username = $row["username"];
+                } else {
+                    echo ' <header class="masthead"><div class="container px-5 mt-4"><h2>Error!</h2>Listing does not exist.</div></header>';
+                        include "footer.php";
+                        echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                                <script src="js/scripts.js"></script>
+                                </body>
+                                </html>';
+                        die();
+                }
             }
             $conn->close();
-            
-            $listingId = $row["listingId"];
-            $listingName = $row["listingName"];
-            $listingPrice = $row["listingPrice"];
-            $listingInfo = $row["listingInfo"];
-            $listingImg = $row["imagePath"];
-            $listingTag = $row["listingTag"];
-            $userId = $row["listingOwnerId"];
-            $username = $row["username"];
         ?>
 
         <header class="masthead">
