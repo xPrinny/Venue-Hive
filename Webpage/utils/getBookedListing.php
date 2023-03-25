@@ -1,5 +1,6 @@
 <?php 
 // temp workaround, just leave it first
+    $listingId = $_POST['listingId'];
 
     // prepare statement. gets all info from listings table for relevant listing Id
     $stmt = $conn->prepare("SELECT a.*,  b.username FROM venuehive.listings a INNER JOIN venuehive.members b on a.listingOwnerId = b.memberId WHERE listingId = " . $listingId . ";");
@@ -8,11 +9,6 @@
     if ($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
-    }
-    else
-    {
-        $errorMsg = "No listings in database!";
-        $success = false;
     }
     $stmt->close();
 ?>

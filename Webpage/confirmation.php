@@ -16,23 +16,10 @@
         <?php 
             global $bookingDate, $paymentType, $ccno;
 
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $listingId = $_POST['cclistingId'];
-                $bookingDate = $_POST['ccbookingDate'];
-                $paymentType = $_POST['ccpaymentType'];
-                $ccno = substr($_POST['ccno'], -4);
-                echo $paymentType;
-                echo $bookingDate;
-                echo $listingId;
-                echo $ccno;
-            } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $listingId = $_GET['listingId'];
-                $bookingDate = $_GET['bookingDate'];
-                $paymentType = $_GET['paymentType'];
-                echo $paymentType;
-                echo $bookingDate;
-                echo $listingId;
-            }
+            $listingId = $_POST['listingId'];
+            $bookingDate = $_POST['bookingDate'];
+            $paymentType = $_POST['paymentType'];
+            $ccno = substr($_POST['ccno'], -4);
 
             global $listingName, $listingPrice; //$username
 
@@ -46,10 +33,7 @@
             $listingName = $row["listingName"];
             $listingPrice = $row["listingPrice"];
             $posterId = $row["listingOwnerId"];
-            // $bookerName = "Booker Name (to edit later)";
-
-            // echo "<br>Listing Id and Booking Date: " . $listingId . ", " . $bookingDate . "," . $paymentType;
-            // echo "<br>Listing Name: " . $listingName . "<br>Price: " . $listingPrice . "<br>Host Username: " . $username . "<br><br>";
+            $listingImg = $row["imagePath"];
         ?>
 
         <?php
@@ -76,7 +60,7 @@
             $memberName = $row["lastName"];
             $bListingName = $row["listingName"];
             $bListingPrice = $row["listingPrice"];
-//            $bookingDate = $row["bookingDate"]; // uncomment when this is added to database
+            $bookingDate = $row["bookingDate"];
             
             $conn->close();
         ?>
@@ -112,7 +96,7 @@
                                 <hr/>
                                 <div class="row align-items-start">
                                         <div class="card itemBorderless">
-                                            <img src="assets/property-1.jpg" class="card-img-top card-img-thumbnail" alt="...">
+                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="...">
                                             <div class="card-body" id="card-body-text">
                                                 <p class="card-text"><?php echo $bListingName; ?></p>
                                                 <p class="card-text"><?php echo $bookingDate; ?></p>

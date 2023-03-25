@@ -15,27 +15,29 @@
 
         <!-- Profile Information -->
         <?php 
-            $listingId = $_GET['listingId'];
-            $bookingDate = $_GET['bookingDate'];
+            $listingId = $_POST['listingId'];
+            $bookingDate = $_POST['bookingDate'];
+            $listingPrice = $_POST['listingPrice'];
             
             global $listingName, $listingPrice, $username;
 
             include "utils/loadDB.php";
 
             if ($success) {
-                include "utils/getListingInfo.php";
+                include "utils/getBookedListing.php";
                 
                 $listingName = $row["listingName"];
                 $listingPrice = $row["listingPrice"];
                 $username = $row["username"];
+                $listingImg = $row["imagePath"];
         ?>
 
         <header class="masthead">
             <div class="container px-5">
                 <div class="row gx-5">
                     <div class="col-lg-9">
-                        <div class="card shadow" id="paymentBody">
-                            <div class="card-body" id="itemListings">
+                        <div class="card shadow">
+                            <div class="card-body" id="paymentBody">
                                 <h5 class="card-title">Choose payment type</h5>
                                 <hr/>
                                 <div class="form-check ms-3 mt-3">
@@ -71,12 +73,12 @@
                                                 <input class="form-control ccForm" type="tel" minlength="3" maxlength="3" size="3" placeholder="CVC" pattern="^[0-9]*$" title="Please enter the credit card verficiation number" required>
                                             </div>
                                         </div>
-                                        <input type="hidden" name="cclistingId" value="<?php echo $listingId ?>">
-                                        <input type="hidden" name="ccbookingDate" value="<?php echo $bookingDate ?>">
-                                        <input type="hidden" name="ccpaymentType" value="cc">
+                                        <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
+                                        <input type="hidden" name="bookingDate" value="<?php echo $bookingDate ?>">
+                                        <input type="hidden" name="paymentType" value="cc">
                                     </form>
                                 </div>
-                                <form id="codForm" action="confirmation.php" method="get">
+                                <form id="codForm" action="confirmation.php" method="post">
                                     <input type="hidden" name="listingId" id="listingId" value="<?php echo $listingId ?>">
                                     <input type="hidden" name="bookingDate" id="bookingDate" value="<?php echo $bookingDate ?>">
                                     <input type="hidden" name="paymentType" id="paymentType" value="cod">
@@ -91,13 +93,14 @@
                                 <hr/>
                                 <div class="row align-items-start">
                                         <div class="card itemBorderless">
-                                            <img src="assets/property-1.jpg" class="card-img-top card-img-thumbnail" alt="...">
+                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="...">
                                             <div class="card-body" id="card-body-text">
                                                 <p class="card-text"><?php echo $listingName; ?></p>
                                                 <p class="card-text"><?php echo $bookingDate; ?></p>
                                                 <p class="card-text lead fs-6">$ <?php echo $listingPrice; ?></p>
                                             </div>
-                                            <br><button id="paymentFormBtn" class="btn btn-primary float-end">Place order now</button>
+                                            <br>
+                                            <button id="paymentFormBtn" class="btn btn-primary float-end" form="ccForm">Place order now</button>
                                         </div>
                                 </div>
                             </div>
