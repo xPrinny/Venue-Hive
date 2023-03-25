@@ -58,42 +58,42 @@
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputFirstName" class=" mb-2">First Name</label>
-                                            <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" autocomplete="off" value=<?php echo "$firstName"; ?>>
+                                            <input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name" autocomplete="off" value=<?php echo "$firstName"; ?>>
                                         </div> 
                                         <div class="form-group col-md-5 mb-2">
                                             <label for="inputLastName" class=" mb-2">Last Name</label>
-                                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" autocomplete="off" value=<?php echo "$lastName"; ?>>
+                                            <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" autocomplete="off" value=<?php echo "$lastName"; ?>>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 mb-2">
                                         <label for="inputEmail" class=" mb-2">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" autocomplete="off" value=<?php echo "$email"; ?>>
+                                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" autocomplete="off" value=<?php echo "$email"; ?>>
                                     </div>
                                     <hr class="hr-med">
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
-                                            <label for="inputPassword" class=" mb-2">New Password</label>
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="New Password">
+                                            <label for="inputPassword" class="mb-2">New Password</label>
+                                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="New Password">
                                         </div>
                                         <div class="form-group col-md-5 mb-2">
-                                            <label for="inputPasswordConfirm" class=" mb-2">New Password Confirmation</label>
+                                            <label for="inputPasswordConfirm" class="mb-2">New Password Confirmation</label>
                                             <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirmation">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 mb-2">
-                                        <label for="inputPassword" class=" mb-2">Old Password</label>
-                                        <input type="password" class="form-control" id="inputOldPassword" placeholder="Old Password">
+                                        <label for="inputPassword" class="mb-2">Old Password</label>
+                                        <input type="password" class="form-control" id="inputOldPassword" name="inputOldPassword" placeholder="Old Password">
                                     </div>
-                                    <input hidden type="text" class="form-control" id="username"><br>
+                                    <input hidden type="text" class="form-control" id="username" name="username"><br>
                                     <button type="submit" class="btn btn-primary">Update Profile</button>
                                 </form>
                             </div>
                             <div class="card-body" id="accountSettings" style="display: none;">
                                 <h5 class="card-title">Account Preference</h5><hr>
-                                <form id="settingPrefence" action="utils/modifyAccount">
+                                <form id="settingPreference" action="utils/modifyAccount">
                                     <div class="form-check">
                                         <p><u>Newsletter</u></p>
-                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck"
+                                        <input class="form-check-input" type="checkbox" value="" id="newsletterCheck" name="newsletterCheck"
                                         <?php if ($newsletter) { echo 'checked'; } ?>>
                                         <label class="form-check-label" for="newsletterCheck">
                                           Join our newsletter to stay up to date with the latest news and updates to our site.

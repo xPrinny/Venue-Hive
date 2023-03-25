@@ -86,31 +86,32 @@ $('#editProfileName .card-header').on('click', '[data-editable]', function() {
 
 $('#settingUpdate').submit(function() {
     var action = $(this).attr('action');
-    if (!EntryCheck()) return false;
     $.ajax({
-        url  : action,
-        type : 'POST',
-        data : $('#settingUpdate, #settingPrefence').serialize(),
+        type : "POST",
+        url  : action + '/',
+        data : $('#settingUpdate, #settingPreference').serialize(),
         success : function() {
+            alert(1);
             window.location.replace(action);
-        }
+        },
+        dataType : 'application/x-www-form-urlencoded; charset=UTF-8'
     });
     return false;
 });
 
-$('#settingPrefence').submit(function() {
+$('#settingPreference').submit(function() {
     var action = $(this).attr('action');
-    if (!EntryCheck()) return false;
     $.ajax({
+        type : "POST",
         url  : action,
-        type : 'POST',
-        data : $('#settingUpdate, #settingPrefence').serialize(),
+        data : $('#settingUpdate, #settingPreference').serialize(),
         success : function() {
             window.location.replace(action);
-        }
+        },
+        dataType : 'application/x-www-form-urlencoded; charset=UTF-8'
     });
     return false;
-});settingPrefence
+});
 
 // Checkout page
 $("input[name='paymentRadio']").change(function(event) {
