@@ -17,17 +17,26 @@
 
             if ($success) {
                 include "utils/getListingInfo.php";
+                if ($success) {
+                    $listingId = $row["listingId"];
+                    $listingName = $row["listingName"];
+                    $listingPrice = $row["listingPrice"];
+                    $listingInfo = $row["listingInfo"];
+                    $listingImg = $row["imagePath"];
+                    $listingTag = $row["listingTag"];
+                    $userId = $row["listingOwnerId"];
+                    $username = $row["username"];
+                } else {
+                    echo ' <header class="masthead"><div class="container px-5 mt-4"><h2>Error!</h2>Listing does not exist.</div></header>';
+                        include "footer.php";
+                        echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                                <script src="js/scripts.js"></script>
+                                </body>
+                                </html>';
+                        die();
+                }
             }
             $conn->close();
-            
-            $listingId = $row["listingId"];
-            $listingName = $row["listingName"];
-            $listingPrice = $row["listingPrice"];
-            $listingInfo = $row["listingInfo"];
-            $listingImg = $row["imagePath"];
-            $listingTag = $row["listingTag"];
-            $userId = $row["listingOwnerId"];
-            $username = $row["username"];
         ?>
 
         <header class="masthead">
@@ -56,13 +65,13 @@
                                         if($_SESSION['username'] === $username) {
                                     ?>
                                     <div class="col-lg-3">
-                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onclick="editListing.php" id="editListing" name="editListing">
+                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="editListing" name="editListing">
                                             <span class="d-flex align-items-center">
                                                 <i class="bi bi-pencil-square me-2"></i>
                                                 <span class="small">Edit</span>
                                             </span>
                                         </button>
-                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" onclick="deleteListing.php" id="deleteListing" name="deleteListing">
+                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteListing" name="deleteListing">
                                             <span class="d-flex align-items-center">
                                                 <i class="bi bi-trash me-2"></i>
                                                 <span class="small">Delete</span>
@@ -73,7 +82,7 @@
                                 </div>
                                 <h3 class="font-weight-bold">$<?php echo $listingPrice?></h3>
                                 <hr>
-                                <a href="profile?u=<?php echo $username?>" style="text-decoration: none; color:black">
+                                <a href="profile.php?u=<?php echo $userId?>" style="text-decoration: none; color:black">
                                     <h5><?php echo $username?></h5>
                                 </a>
                                 <p><?php echo $listingInfo?></p>
@@ -88,6 +97,15 @@
                     <div class="col-lg-3">
                         <div class="card shadow" id="bookingForm">
                             <div class="card-body">
+                                <?php if (!isset($_SESSION['username'])) { ?>
+                                    <div>
+                                        <p>You must be logged in to make a booking</p>
+                                    </div>
+                                <?php } else if ($_SESSION['username'] === $username) { ?>
+                                    <div>
+                                        <p>You can't book your own listing!</p>
+                                    </div>
+                                <?php } else {?>
                                 <form action="checkout.php" method="post" id="dateForm">
                                     <div>
                                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
@@ -106,6 +124,24 @@
                                         </button>
                                     </div>
                                 </form>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-customYellow p-4">
+                                <h5 class="modal-title font-alt" id="deleteListingTitle">Delete Listing</h5>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0 p-4">
+                                <h4>Are you sure you want to delete this listing?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-danger" id="deleteListingBtn">Yes</button>
                             </div>
                         </div>
                     </div>
@@ -113,6 +149,26 @@
                 <script>
                     flatpickr('#bookingDate', {
                         dateFormat: "Y-m-d"
+                    });
+                </script>
+                <script>
+                    $(function() {
+                        $('#deleteListingBtn').click(function() {
+                            var listingId = <?php echo json_encode($listingId); ?>;
+
+                            $.ajax({
+                                url: 'deleteListing.php',
+                                type: 'POST',
+                                data: { listingId: listingId },
+                                success: function(response) {
+                                    alert('Listing deleted successfully!');
+                                    location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                alert('Error deleting listing: ' + error);
+                            }
+                            });
+                        });
                     });
                 </script>
             </div>          
