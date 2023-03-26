@@ -12701,6 +12701,10 @@ footer a:focus {
   background-color: #ffbf24;
 }
 
+.customYellow {
+  color: #ffbf24;
+}
+
 .ccForm {
   width: auto;
   display: initial;

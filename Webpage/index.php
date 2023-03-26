@@ -28,56 +28,81 @@
         <div class="container px-5">
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-8">
-                    <div id="carouselDisplayItems" class="carousel slide carousel-fade" data-bs-ride="false">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselDisplayItems" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselDisplayItems" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselDisplayItems" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="assets/slide-1.jpg" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
-                                </div>
-                                <div class="carousel-review d-none">
-                                    <h1 class="display-6 lh-1 mb-3">(Icon) Review User</h1>
-                                    <p class="lead fw-normal text-muted mb-5">Review description 1</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/slide-2.jpg" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
-                                </div>
-                                <div class="carousel-review d-none">
-                                    <h1 class="display-6 lh-1 mb-3">(Icon) Review User</h1>
-                                    <p class="lead fw-normal text-muted mb-5">Review description 2</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="assets/slide-3.jpg" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
-                                </div>
-                                <div class="carousel-review d-none">
-                                    <h1 class="display-6 lh-1 mb-3">(Icon) Review User</h1>
-                                    <p class="lead fw-normal text-muted mb-5">Review description 3</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDisplayItems" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselDisplayItems" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                <div id="carouselDisplayItems" class="carousel slide carousel-fade" data-bs-ride="false">
+                    <div class="carousel-indicators">
+                        <?php 
+                            include "utils/loadDB.php";
+
+                            if($success) {
+                                include "utils/randomReviews.php";
+                            }
+                            $conn->close();
+
+                            foreach ($rows as $index => $row) {
+                                $activeClass = ($index == 0) ? 'active' : '';
+                        ?>
+                        <button type="button" data-bs-target="#carouselDisplayItems" data-bs-slide-to="<?php echo $index ?>" 
+                        class="<?php echo $activeClass ?>" aria-label="Slide <?php echo ($index+1) ?>"></button>
+                        <?php } ?>
                     </div>
+                    <div class="carousel-inner">
+                        <?php 
+                            $index = 0;
+                            foreach ($rows as $row) {
+                                $listingId = $row["listingId"];
+                                $listingName = $row["listingName"];
+                                $listingPrice = $row["listingPrice"];
+                                $listingImg = $row["imagePath"];
+                                $rating = $row["ratingStar"];
+                                $review = $row["ratingComment"];
+                                $listingInfo = $row["listingInfo"];
+                                $y = 0;
+
+                                if(strlen($listingInfo) > 50){
+                                    $listingDesc = substr($listingInfo,0,50) . " ...";
+                                }
+                                else{
+                                    $listingDesc = $listingInfo;
+                                }
+
+                                $activeClass = ($index == 0) ? 'active' : '';
+                        ?>
+                        <div class="carousel-item <?php echo $activeClass ?>">
+                            <a href="listing?listingId=<?php echo $listingId?>" style="text-decoration: none; color:white">
+                                <img src="<?php echo $listingImg?>" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5><?php echo $listingName?></h5>
+                                <p><?php echo $listingDesc?></p>
+                            </a>
+                            </div>
+                            <div class="carousel-review d-none">
+                                <h1 class="display-6 lh-1 mb-3"><?php
+                                    for($x=0; $x<5; $x++) {
+                                        if ($y < $rating) {
+                                            echo '<i class="bi bi-star-fill customYellow"></i>';
+                                        } else {
+                                            echo '<i class="bi bi-star customYellow"></i>';
+                                        }
+                                        $y++;
+                                    }
+                                ?></h1>
+                                <p class="lead fw-normal text-muted mb-5"><?php echo $review?></p>
+                            </div>
+                        </div>
+                        <?php 
+                            $index++;
+                        } ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDisplayItems" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselDisplayItems" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
                 </div>
                 <div class="col-lg-4">
                     <div id="carouselSideText"></div>
