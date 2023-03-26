@@ -68,32 +68,46 @@
                             <div class="card-body" id="itemListings">
                                 <h5 class="card-title">Listings</h5>
                                 <hr/>
-                                <div class="row align-items-start">
-                                    <div class="col-lg-4">
+                                <div class="row align-items-start" id="listings">
+                                    <?php
+                                        global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc, $listingImg;
+                                        include "utils/loadDB.php";
+
+                                        if ($success) {
+                                            include "utils/getUserListings.php";
+                                        }
+
+                                        $conn->close();
+
+                                        foreach ($rows as $row) {
+                                            $listingId = $row["listingId"];
+                                            $listingName = $row["listingName"];
+                                            $listingPrice = $row["listingPrice"];
+                                            $listingImg = $row["imagePath"];
+                                            $listingInfo = $row["listingInfo"];
+
+                                            if(strlen($listingInfo) > 200){
+                                                $listingDesc = substr($listingInfo,0,200) . " ...";
+                                            }
+                                            else{
+                                                $listingDesc = $listingInfo;
+                                            }
+                                    ?>
+                                    <div class="col-lg-4 mb-4">
                                         <div class="card">
-                                            <img src="assets/property-1.jpg" class="card-img-top card-img-thumbnail" alt="...">
+                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="<?php echo $listingName?>" style="object-fit:cover;">
+                                            <a href ='listing.php?listingId=<?php echo $listingId?>' style="text-decoration: none; color:black">
                                             <div class="card-body" id="card-body-text">
-                                                <p class="card-text">Item 1</p>
-                                                <p class="card-text lead fs-6">Item description</p>
+                                                <h6 class="bg-customYellow text-center rounded p-1"><?php echo $listingName;?></h6>
+                                                    <p>
+                                                        <?php echo $listingDesc;?><br>
+                                                    </p>      
+                                                <h5 class="card-title">Price: <?php echo $listingPrice;?></h5>
                                             </div>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4"> 
-                                        <div class="card">
-                                            <img src="assets/property-2.jpg" class="card-img-top card-img-thumbnail" alt="...">
-                                            <div class="card-body" id="card-body-text">
-                                                <p class="card-text">Item 2</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="card">
-                                            <img src="assets/property-3.jpg" class="card-img-top card-img-thumbnail" alt="...">
-                                            <div class="card-body" id="card-body-text">
-                                                <p class="card-text">Item 3</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php }?>
                                 </div>
                             </div>
                             <div class="card-body" id="reviewListings" style="display: none;">
