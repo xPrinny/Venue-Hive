@@ -8,8 +8,11 @@
 
     $dates = array();
     $currentDate = $startDate;
+    $today = date('Y-m-d');
     while ($currentDate <= $endDate) {
-        $dates[] = $currentDate;
+        if ($currentDate >= $today) {
+            $dates[] = $currentDate;
+        }
         $currentDate = date('Y-m-d', strtotime($currentDate . ' +1 day'));
     }
 
@@ -17,7 +20,10 @@
     $result = mysqli_query($conn, $query);
     $bookedDates = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $bookedDates[] = $row['bookingDate'];
+        $bookingDate = $row['bookingDate'];
+        if ($bookingDate >= $today) {
+            $bookedDates[] = $bookingDate;
+        }
     }
     
     $availableDates = array_diff($dates, $bookedDates);
