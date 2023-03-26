@@ -55,9 +55,9 @@
                                     <a href="#" class="list-group-item list-group-item-action active" id="item1">Listings</a>
                                     <a href="#" class="list-group-item list-group-item-action" id="item2">Reviews</a>
                                     <?php
-                                        if ($username === $_SESSION['username']) {
-                                            echo '<a href="#" class="list-group-item list-group-item-action" id="item3">My Orders</a>';
-                                        }
+                                        if ($username === $_SESSION['username']) {?>
+                                            <a href="#" class="list-group-item list-group-item-action" id="item3">My Orders</a>
+                                    <?php }
                                     ?>
                                 </div>
                             </div>
@@ -131,6 +131,67 @@
                                         $brCount++;
                                     }
                                 ?>
+                            </div>
+                            <div class="card-body" id="profileOrders" style="display: none;">
+                                <h5 class="card-title">My Orders</h5>
+                                <hr>
+                                <?php
+                                    include "utils/loadDB.php";
+
+                                    if ($success) {
+                                        include "utils/getUserBookings.php";
+                                    }
+                                    $conn->close();
+                                    
+                                    foreach ($rows as $row) {
+                                        $posterUn = $row["poster"];
+                                        $bookerUn = $row["booker"];
+                                        $listingName = $row["listingName"];
+                                        $listingImg = $row["imagePath"];
+                                        $enddate = $row["enddate"];
+                                        $valid = $row["valid"];
+                                        $bookingDate = $row["bookingDate"];
+                                        $bookingTimestamp = $row["BookingTimestamp"];
+                                        $bookingState = $row["BookingState"];
+                                        $bookingId = $row["bookingId"];
+                                        $listingId = $row["listingId"];
+                                        $posterId = $row["posterId"];
+                                        $bookerId = $row["bookerId"];
+                                ?>
+                                <div class="card mt-1 mb-3">
+                                    <div class="row card-header pt-3 ms-0 me-0">
+                                        <div class="col-lg-9">
+                                            <p><?php echo $bookingTimestamp?></p>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <button class="btn btn-primary"><?php echo $bookingState?></button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <img src="<?php echo $listingImg?>" class="card-img-thumbnail mt-3 ms-3">
+                                            <h5 class="card-title mt-1 ms-3"><?php echo $listingName?></h6>
+                                            <h6 class="mt-1 ms-3 mb-3">Posted by: <?php echo $posterUn?></h6>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <h4 class="mt-3">Booking Details</h4>
+                                            <hr class="me-3">
+                                            <h6>Booking Id: <?php echo $bookingId?></h6>
+                                            <h6>Booker Username: <?php echo $bookerUn?></h6>
+                                            <h6>Booking Date: <?php echo $bookingDate?></h6>
+                                            <div class="row pt-5">
+                                                <div class="col-lg-4"></div>
+                                                <div class="col-lg-5">
+                                                    <button class="btn btn-primary">View Booking Confirmation</button>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <button class="btn btn-primary">Write Review</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

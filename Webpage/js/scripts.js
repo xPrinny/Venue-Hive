@@ -67,7 +67,8 @@ $('.card-body a').click(function(event) {
     } else if (event.target.id === "item3") {
         $('.col-lg-9 .card-body').hide();
         $('.card-body #item3.list-group-item').addClass('active');
-        // $('.col-lg-9 #accountSettings.card-body').show();
+        $('.col-lg-9 #accountSettings.card-body').show();
+        $('.col-lg-9 #profileOrders.card-body').show();
     }
 });
 
