@@ -124,3 +124,61 @@ $("input[name='paymentRadio']").change(function(event) {
         $('#paymentFormBtn').attr("form", "codForm");
     }
 });
+
+// Writing Review
+$(function() {
+    var rating = 0;
+  
+    $(".rating i").on("mouseover", function() {
+        var currentRating = parseInt($(this).data("rating"));
+
+        $(".rating i").each(function() {
+            var starRating = parseInt($(this).data("rating"));
+            if (starRating <= currentRating) {
+            $(this).removeClass("bi-star");
+            $(this).addClass("bi-star-fill");
+            $(this).css("color", "#ffbf24");
+        } else {
+            $(this).removeClass("bi-star-fill");
+            $(this).addClass("bi-star");
+            $(this).css("color", "#ffbf24");
+        }
+        });
+    });
+
+    $(".rating i").on("mouseout", function() {
+        $(".rating i").removeClass("bi-star-fill");
+        $(".rating i").addClass("bi-star");
+        $(".rating i").css("color", "#ffbf24");
+        // Restore selected star color and fill if rating has been set
+        if (rating > 0) {
+            $(".rating i").each(function() {
+            var starRating = parseInt($(this).data("rating"));
+            if (starRating <= rating) {
+                $(this).removeClass("bi-star");
+                $(this).addClass("bi-star-fill");
+                $(this).css("color", "#ffbf24");
+            }
+            });
+        }
+    });
+
+    $(".rating i").on("click", function() {
+        rating = parseInt($(this).data("rating"));
+        $("#rating").val(rating);
+        // Fill in selected star and all stars to the left of it
+        $(".rating i").each(function() {
+        var starRating = parseInt($(this).data("rating"));
+        if (starRating <= rating) {
+            $(this).removeClass("bi-star");
+            $(this).addClass("bi-star-fill");
+            $(this).css("color", "#ffbf24");
+        } else {
+            $(this).removeClass("bi-star-fill");
+            $(this).addClass("bi-star");
+            $(this).css("color", "#ffbf24");
+        }
+        });
+    });
+  });
+  

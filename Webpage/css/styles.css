@@ -12886,3 +12886,18 @@ body {
 .listingImage {
   position: relative;
 }
+
+/* writing a new review */
+.rating i {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: black;
+}
+
+.rating i:hover,
+.rating i:focus,
+.rating i.selected {
+  transform: scale(1.2);
+  color: #ffbf24;
+}
