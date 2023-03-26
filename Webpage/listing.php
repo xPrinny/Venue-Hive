@@ -97,39 +97,57 @@
                     <div class="col-lg-3">
                         <div class="card shadow" id="bookingForm">
                             <div class="card-body">
-                                <?php if (!isset($_SESSION['username'])) { ?>
-                                    <div>
-                                        <p>You must be logged in to make a booking</p>
-                                    </div>
-                                <?php } else if ($_SESSION['username'] === $username) { ?>
-                                    <div>
-                                        <p>You can't book your own listing!</p>
-                                    </div>
-                                <?php } else {
+                                <?php 
                                     include "utils/loadDB.php";
-                                    
                                     if($success) {
                                         include "utils/bookingCalendar.php";
-                                    }?>
-                                <form action="checkout.php" method="post" id="dateForm">
-                                    <div>
-                                        <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
-                                        <input type="hidden" name="listingPrice" value="<?php echo $listingPrice ?>">
-                                        <label for="bookingDate">Date:</label>
-                                        <!-- the input bar isnt responsive when window width less than 1198, need to find a fix -->
-                                        <input type="text" id="bookingDate" name="bookingDate" placeholder="Please select date">
-                                    </div>
-                                    <br>
-                                    <div>
-                                        <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" type="submit">
-                                            <span class="d-flex align-items-center">
-                                            <i class="bi bi-calendar2-check me-2" required></i>
-                                                <span class="small">Book</span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </form>
-                                <?php } ?>
+                                    
+                                    if (!isset($_SESSION['username'])) { ?>
+                                        <div>
+                                            <p>You must be logged in to make a booking</p>
+                                        </div>
+                                <?php 
+                                    } else if ($_SESSION['username'] === $username) { 
+                                        if ($endDate >= date("Y-m-d")) {?>
+                                            <div>
+                                                <p>You can't book your own listing!</p>
+                                            </div>
+                                <?php   } else { ?>
+                                            <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                                                <span class="d-flex align-items-center">
+                                                <i class="bi bi-calendar2-check me-2" required></i>
+                                                    <span class="small">Listing is Archived</span>
+                                                </span>
+                                            </button>
+                                <?php   }
+                                    } else {
+                                        if ($endDate >= date("Y-m-d")) {?>
+                                            <form action="checkout.php" method="post" id="dateForm">
+                                                <div>
+                                                    <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
+                                                    <input type="hidden" name="listingPrice" value="<?php echo $listingPrice ?>">
+                                                    <label for="bookingDate">Date:</label>
+                                                    <!-- the input bar isnt responsive when window width less than 1198, need to find a fix -->
+                                                    <input type="text" id="bookingDate" name="bookingDate" placeholder="Please select date">
+                                                </div>
+                                                <br>
+                                                <div>
+                                                    <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" type="submit">
+                                                        <span class="d-flex align-items-center">
+                                                        <i class="bi bi-calendar2-check me-2" required></i>
+                                                            <span class="small">Book</span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                <?php   } else {?>
+                                            <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
+                                                <span class="d-flex align-items-center">
+                                                <i class="bi bi-calendar2-check me-2" required></i>
+                                                    <span class="small">Listing is Archived</span>
+                                                </span>
+                                            </button>
+                                        <?php }}} ?>
                             </div>
                         </div>
                     </div>
