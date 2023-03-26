@@ -1,7 +1,7 @@
 <?php
 
     $filtervalues = $_POST['search'];
-    $stmt = $conn->prepare("SELECT * FROM venuehive.listings WHERE listingName LIKE '%$filtervalues%' ORDER BY listingName ASC;");
+    $stmt = $conn->prepare("SELECT * FROM venuehive.listings WHERE valid = 1 AND listingName LIKE '%$filtervalues%' ORDER BY listingName ASC;");
     // $searchTerm = "'%" . $filtervalues . "%'";
     // $stmt->bind_param("s", $searchTerm);
     $stmt->execute();

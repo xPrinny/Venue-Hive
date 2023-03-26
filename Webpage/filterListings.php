@@ -3,7 +3,7 @@
 
     if(isset($_POST['action'])) {
         $sql = "SELECT a.*, GROUP_CONCAT(b.tag) as tags FROM venuehive.listings a 
-        INNER JOIN venuehive.Tags b on a.listingId = b.listingId WHERE location !=''";
+        INNER JOIN venuehive.Tags b on a.listingId = b.listingId WHERE valid = 1";
 
         $location = "";
         if(isset($_POST['location']) && count($_POST['location']) > 0) {
