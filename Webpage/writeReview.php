@@ -89,6 +89,7 @@
                                             <p class="card-text"><?php echo $bListingName; ?></p>
                                             <p class="card-text"><?php echo $bookingDate; ?></p>
                                             <p class="card-text lead fs-6">$ <?php echo $bListingPrice; ?></p>
+                                            <p class="card-text">Role: <?php echo $role?></p>
                                         </div>
                                     </div>
                                 </div>
