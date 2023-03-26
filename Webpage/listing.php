@@ -105,7 +105,12 @@
                                     <div>
                                         <p>You can't book your own listing!</p>
                                     </div>
-                                <?php } else {?>
+                                <?php } else {
+                                    include "utils/loadDB.php";
+                                    
+                                    if($success) {
+                                        include "utils/bookingCalendar.php";
+                                    }?>
                                 <form action="checkout.php" method="post" id="dateForm">
                                     <div>
                                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
@@ -148,7 +153,9 @@
                 </div>
                 <script>
                     flatpickr('#bookingDate', {
-                        dateFormat: "Y-m-d"
+                        enable: [<?php echo "'" . $availableDatesString . "'"; ?>],
+                        dateFormat: "Y-m-d",
+                        disable: [<?php echo "'" . $disabledDatesString . "'"; ?>]
                     });
                 </script>
                 <script>
