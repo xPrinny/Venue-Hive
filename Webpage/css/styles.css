@@ -12892,12 +12892,13 @@ body {
   font-size: 2rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  color: black;
 }
 
 .rating i:hover,
-.rating i:focus,
-.rating i.selected {
+.rating i:focus {
   transform: scale(1.2);
+}
+
+.rating i.bi-star-fill {
   color: #ffbf24;
 }
