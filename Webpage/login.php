@@ -14,14 +14,14 @@
 
             <!-- Username input-->
             <div class="form-floating mb-3">
-              <input class="form-control" id="uname" name="uname" type="text" placeholder="Enter your Username" required/>
-              <label for="email">Username</label>
+              <input class="form-control" id="uname" name="uname" type="text" placeholder="Enter your Username" required>
+              <label for="uname">Username</label>
             </div>
 
             <!-- Password input-->
             <div class="form-floating mb-3">
-              <input class="form-control" id="pwd" name="pwd" type="password" placeholder="Enter your Password" required/>
-              <label for="password">Password</label>
+              <input class="form-control" id="pwd" name="pwd" type="password" placeholder="Enter your Password" required>
+              <label for="pwd">Password</label>
             </div>
 
             <!-- Submit Button-->

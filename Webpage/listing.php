@@ -44,11 +44,11 @@
                 <div class="listingImage">
                     <div class="container">
                         <div class="blur-bg">
-                            <img src="<?php echo $listingImg ?>">
+                            <img src="<?php echo $listingImg ?>" alt="blurred background image for <?php echo $listingName?>">
                         </div>
                         <div class="listingImg-container">
-                            <img src="<?php echo $listingImg ?>" alt="<?php echo $listingId ?>" style="height:100%; object-fit:contain;">
-                            <img src="<?php echo $listingImg ?>" alt="<?php echo $listingId ?>" style="height:100%; object-fit:contain;">
+                            <img src="<?php echo $listingImg ?>" style="height:100%; object-fit:contain;" alt="<?php echo $listingName?> image 1">
+                            <img src="<?php echo $listingImg ?>" style="height:100%; object-fit:contain;" alt="<?php echo $listingName?> image 2">
                         </div> 
                     </div>
                 </div>

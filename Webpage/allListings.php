@@ -20,7 +20,20 @@
                     <div class="col-lg-3">
                         <div class="card shadow">
                             <div class="card-body" id="filters">
-                                <form action="" method="POST">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sort By
+                                    </button>
+                                    <!-- <div class="dropdown-menu" aria-labelledby="sortDropdown" id="sort_option">
+                                        <a class="dropdown-item" value="default">Default</a>
+                                        <a class="dropdown-item" value="newest">Newest to Oldest</a>
+                                        <a class="dropdown-item" value="name_atoz">Alphabetically (A to Z)</a>
+                                        <a class="dropdown-item" value="name_ztoa">Alphabetically (Z to A)</a>
+                                        <a class="dropdown-item" value="price_asc">Price (Low to High)</a>
+                                        <a class="dropdown-item" value="price_desc">Price (High to Low)</a>
+                                    </div> -->
+                                </div>
+                                <form action="#" method="POST">
                                     <div class="input-group mb-3">
                                         <input type="text" name="search" value="<?php if(isset($_POST['search'])) {echo $_POST['search'];}?>" class="form-control" placeholder="Search...">
                                         <button type="submit" class="btn bg-customYellow">Search</button>
@@ -38,7 +51,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['location'];?>" id="location"><?php echo $row['location'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['location'];?>" id="location_<?php echo preg_replace('/\s+/', '', $row['location']);?>"><?php echo $row['location'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -54,7 +67,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['category'];?>" id="category"><?php echo $row['category'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['category'];?>" id="category_<?php echo preg_replace('/\s+/', '', $row['category']);;?>"><?php echo $row['category'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -70,7 +83,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['tag'];?>" id="tag"><?php echo $row['tag'];?>
+                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['tag'];?>" id="tag_<?php echo preg_replace('/\s+/', '', $row['tag']);?>"><?php echo $row['tag'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -93,9 +106,9 @@
                                             if(isset($_POST['search'])) {
                                                 include "utils/searchBar.php";
                                             } 
-                                             elseif (!isset($_POST['search'])) {
-                                                 include "utils/getAllListings.php";
-                                             }
+                                            elseif (!isset($_POST['search'])) {
+                                                include "utils/getAllListings.php";
+                                            }
                                         }
 
                                         $conn->close();
@@ -118,7 +131,7 @@
                                         <div class="card">
                                             <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="<?php echo $listingName?>" style="object-fit:cover;">
                                             <a href ='listing.php?listingId=<?php echo $listingId?>' style="text-decoration: none; color:black">
-                                            <div class="card-body" id="card-body-text">
+                                            <div class="card-body">
                                                 <h6 class="bg-customYellow text-center rounded p-1"><?php echo $listingName;?></h6>
                                                     <p>
                                                         <?php echo $listingDesc;?><br>
@@ -143,7 +156,7 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <!--Plugin CSS file with desired skin-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css">
         <!--jQuery-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!--Plugin JavaScript file-->
@@ -175,6 +188,22 @@
                     return filterData;
                 }
             });
+            // // Listen for changes in the sort dropdown
+            // document.getElementById("sort-by").addEventListener("change", function() {
+            // // Get the selected sort option
+            // var sortBy = this.value;
+
+            // // Send an AJAX request to the PHP script to get the sorted search results
+            // var xhr = new XMLHttpRequest();
+            // xhr.open("POST", "search.php", true);
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // xhr.onreadystatechange = function() {
+            //     if (xhr.readyState === 4 && xhr.status === 200) {
+            //     document.getElementById("search-results").innerHTML = xhr.responseText;
+            //     }
+            // };
+            // xhr.send("sort=" + sortBy);
+            // });
         </script>
     </body>
 </html>

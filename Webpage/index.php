@@ -71,12 +71,12 @@
                             <a href="listing?listingId=<?php echo $listingId?>" style="text-decoration: none; color:white">
                                 <img src="<?php echo $listingImg?>" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5><?php echo $listingName?></h5>
-                                <p><?php echo $listingDesc?></p>
-                            </a>
-                            </div>
+                                    <h5><?php echo $listingName?></h5>
+                                    <p><?php echo $listingDesc?></p>
+                                </div>
+                            </a>    
                             <div class="carousel-review d-none">
-                                <h1 class="display-6 lh-1 mb-3"><?php
+                                <div class="display-6 lh-1 mb-3"><?php
                                     for($x=0; $x<5; $x++) {
                                         if ($y < $rating) {
                                             echo '<i class="bi bi-star-fill customYellow"></i>';
@@ -85,8 +85,8 @@
                                         }
                                         $y++;
                                     }
-                                ?></h1>
-                                <p class="lead fw-normal text-muted mb-5"><?php echo $review?></p>
+                                ?></div>
+                                <p class="lead fw-normal mb-5"><?php echo $review?></p>
                             </div>
                         </div>
                         <?php 
@@ -116,7 +116,7 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-xl-8">
                     <div class="h2 fs-2 mb-4">Discover your perfect event space on VenueHive - book, rent, and earn today!</div>
-                    <img src="assets/img/VenueHiveLogo.png" alt="Venue Hive Logo" style="width: 50%" />
+                    <img src="assets/img/VenueHiveLogo.png" alt="Venue Hive Logo" style="width: 50%">
                 </div>
             </div>
         </div>
