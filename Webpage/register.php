@@ -30,27 +30,27 @@
                 </div>
                 <div class="form-group">
                     <label for="lname">Last Name:</label>
-                    <input class="form-control" type="text" id="lname" required maxlength="45" name="lname" placeholder="Enter last name">
+                    <input class="form-control" type="text" id="lname" required maxlength="45" name="lname" placeholder="Enter last name" required>
                 </div>
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input class="form-control" type="text" id="username" required maxlength="45" name="username" placeholder="Enter username">
+                    <input class="form-control" type="text" id="username" required maxlength="45" name="username" placeholder="Enter username" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input class="form-control" type="email" id="email" required name="email" placeholder="Enter email">
+                    <input class="form-control" type="email" id="email" required name="email" placeholder="Enter email" required>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input class="form-control" type="password" id="pwd" required name="pwd" placeholder="Enter password">
+                    <input class="form-control" type="password" id="pwd" required name="pwd" placeholder="Enter password" required>
                 </div>
                 <div class="form-group">
                     <label for="pwd_confirm">Confirm Password:</label>
-                    <input class="form-control" type="password" id="pwd_confirm" required name="pwd_confirm" placeholder="Confirm password">
+                    <input class="form-control" type="password" id="pwd_confirm" required name="pwd_confirm" placeholder="Confirm password" required>
                 </div>
-                <div class="form-check">
+                <div class="form-group">
                     <label>
-                        <input type="checkbox" name="agree">
+                        <input type="checkbox" name="agree" required>
                         Agree to terms and conditions.
                     </label>
                 </div>
