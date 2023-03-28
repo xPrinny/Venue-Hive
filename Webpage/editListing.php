@@ -11,13 +11,7 @@
         <?php include "navbar.php";?>
         <header class="masthead">
             <div class="container px-5">
-                <?php
-                    // Retrieve the listing information from the database
-                    $listingId = $_GET['listingId'];
-                    $sql = "SELECT * FROM venuehive.listings WHERE id = $listingId";
-                    $result = mysqli_query($conn, $sql);
-                    $listing = mysqli_fetch_assoc($result);
-                ?>
+                <?php include "utils/getListingInfo.php"?>
                 <form action="process_edit_listing.php" method="post" novalidate class="my-form">
                     <input type="hidden" name="listingId" value="<?php echo $listing['id']; ?>">
                     <div class="form-group">

@@ -100,9 +100,9 @@
             $imagePath = implode(',', $file_names);
             
             if ($success) {
-                $stmt = $conn->prepare("INSERT INTO venuehive.listings (listingId, listingOwnerId, listingName, listingPrice, listingInfo, imagePath, imagePathB, timestamp, address, category, location, startdate, enddate, valid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                $stmt = $conn->prepare("INSERT INTO venuehive.listings (listingOwnerId, listingName, listingPrice, listingInfo, imagePath, imagePathB, timestamp, address, category, location, startdate, enddate, valid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
                 // Bind & execute the query statement:
-                $stmt->bind_param("iisisssssssssi", $listingId, $listingOwnerId, $listingName, $listingPrice, $listingInfo, $imagePath, null, date("Y-m-d H:i:s"), $listingAddress, $category, $listingLocation, $startDate, $endDate, 1);
+                $stmt->bind_param("isisssssssssi", $listingOwnerId, $listingName, $listingPrice, $listingInfo, $imagePath, null, date("Y-m-d H:i:s"), $listingAddress, $category, $listingLocation, $startDate, $endDate, 1);
 
                 // Execute the SQL statement
                 if ($stmt->execute()) {
