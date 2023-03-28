@@ -1,5 +1,7 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        $listingOwnerId = $_SESSION["userId"];
 
         // Validate listing name
         $listingName = filter_input(INPUT_POST, 'listingName', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -86,29 +88,21 @@
         if (empty($bookingDate)) {
             $errors[] = 'Booking date is required';
         }
+        
+        $dateArray = explode(" to ", $bookingDate);
+        $startDate = $dateArray[0];
+        $endDate = $dateArray[1];
 
         // If there are no errors, process the form submission
         if (empty($errors)) {
             include "utils/loadDB.php"; 
+            // Bind the parameters with the sanitized form data
+            $imagePath = implode(',', $file_names);
             
             if ($success) {
-                // Prepare the SQL statement for inserting a new listing
-                $sql = "INSERT INTO venuehive.listings (listingName, listingPrice, listingInfo, imagePath, address, category, location) 
-                        VALUES (:listingName, :listingPrice, :listingInfo, :imagePath, :listingAddress, :category, :listingLocation)";
-
-                $stmt = $conn->prepare($sql);
-
-                // Bind the parameters with the sanitized form data
-                $imagePath = implode(',', $file_names);
-
-                $stmt->bindParam(':listingName', $listingName);
-                $stmt->bindParam(':listingPrice', $listingPrice);
-                $stmt->bindParam(':listingInfo', $listingInfo);
-                $stmt->bindParam(':imagePath', $imagePath);
-                $stmt->bindParam(':listingAddress', $listingAddress);
-                $stmt->bindParam(':category', $category);
-                $stmt->bindParam(':listingLocation', $listingLocation);
-                
+                $stmt = $conn->prepare("INSERT INTO venuehive.listings (listingId, listingOwnerId, listingName, listingPrice, listingInfo, imagePath, imagePathB, timestamp, address, category, location, startdate, enddate, valid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                // Bind & execute the query statement:
+                $stmt->bind_param("iisisssssssssi", $listingId, $listingOwnerId, $listingName, $listingPrice, $listingInfo, $imagePath, null, date("Y-m-d H:i:s"), $listingAddress, $category, $listingLocation, $startDate, $endDate, 1);
 
                 // Execute the SQL statement
                 if ($stmt->execute()) {
