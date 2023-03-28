@@ -40,6 +40,7 @@
         $_SESSION['username'] = $username;
         $_SESSION["userId"] = $memberId;
         $_SESSION["loginStatus"] = "success";
+        $_SESSION["userId"] = $memberId;
 
         header("Location: /");
         die();

@@ -6,8 +6,7 @@
         $_SESSION['fromSetting'] = null;
     }
 
-    $stmt = $conn->prepare("SELECT username, firstName, lastName, email, profilePicture, newsletter,
-                            password FROM members WHERE username='" . $username . "';");
+    $stmt = $conn->prepare("SELECT * FROM members WHERE username='" . $username . "';");
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows == 0) {

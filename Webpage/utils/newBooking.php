@@ -1,7 +1,7 @@
 <?php
-    $posterId = 1; //placeholder
+    // $posterId = 1; //placeholder
     $bookingId = null;
-    $bookerId = 1; //placeholder
+    $bookerId = $_SESSION["userId"]; //placeholder
     $bookingState = "Confirmed";
     $bookingTimestamp = date('Y-m-d H:i:s');
 
