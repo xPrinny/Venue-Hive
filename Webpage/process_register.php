@@ -31,8 +31,8 @@ if (empty($email)) {
     }
 }
 
-$pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$pwd_confirm = filter_input(INPUT_POST, 'pwd_confirm', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd_confirm = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if (empty($pwd) || empty($pwd_confirm)) {
     $errorMsg .= "Password and confirmation are required.<br>";
     $success = false;

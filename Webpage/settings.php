@@ -87,11 +87,11 @@
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputPassword" class="mb-2">New Password</label>
-                                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="New Password">
+                                            <input type="password" class="form-control"" id="inputPassword" name="inputPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" title="Must contain at least one uppercase and lowercase letter, one number, 8 to 16 characters, and does not contain '<>'." placeholder="New Password">
                                         </div>
                                         <div class="form-group col-md-5 mb-2">
                                             <label for="inputPasswordConfirm" class="mb-2">New Password Confirmation</label>
-                                            <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" placeholder="Confirmation">
+                                            <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" placeholder="Confirmation">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 mb-2">
