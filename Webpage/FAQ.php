@@ -29,7 +29,7 @@
         </div>
         <div class="faq-box" role="region" aria-labelledby="payment-question">
           <h2 id="payment-question" class="faqcolor">What payment methods do you accept?</h2>
-          <p>VenueHive accept payments visa credit card and debit card.</p>
+          <p>VenueHive accept payments via credit card , debit card and cash on delivery.</p>
         </div>
       </div>
     </header>
