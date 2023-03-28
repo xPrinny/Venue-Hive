@@ -86,14 +86,18 @@ $('#editProfileName .card-header').on('click', '[data-editable]', function() {
 });
 
 $('#settingUpdate').submit(function() {
+    $username = $('#editProfileName .card-header .card-title').text();
+    if ($username.slice(-1) == "*") {
+        $('input#username').val($username.slice(0, -1));
+    }
+
     var action = $(this).attr('action');
     $.ajax({
-        type : "POST",
+        type : 'POST',
         url  : action + '/',
         data : $('#settingUpdate, #settingPreference').serialize(),
-        success : function() {
-            alert(1);
-            window.location.replace(action);
+        complete : function() {
+            window.location = '/settings';
         },
         dataType : 'application/x-www-form-urlencoded; charset=UTF-8'
     });
@@ -101,15 +105,31 @@ $('#settingUpdate').submit(function() {
 });
 
 $('#settingPreference').submit(function() {
+    $username = $('#editProfileName .card-header .card-title').text();
+    if ($username.slice(-1) == "*") {
+        $('input#username').val($username.slice(0, -1));
+    }
+
     var action = $(this).attr('action');
     $.ajax({
-        type : "POST",
-        url  : action,
+        type : 'POST',
+        url  : action + '/',
         data : $('#settingUpdate, #settingPreference').serialize(),
-        success : function() {
-            window.location.replace(action);
+        complete : function() {
+            window.location = '/settings';
         },
         dataType : 'application/x-www-form-urlencoded; charset=UTF-8'
+    });
+    return false;
+});
+
+$('#deleteAccountBtn').click(function() {
+    $.ajax({
+        type : 'POST',
+        url  : 'utils/deleteAccount/',
+        complete : function() {
+            window.location = '/';
+        }
     });
     return false;
 });

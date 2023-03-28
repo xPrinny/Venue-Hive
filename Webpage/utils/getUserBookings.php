@@ -1,6 +1,5 @@
 <?php 
-//    $userID = $_SESSION['userId'];
-    $userId = 1;
+    $userId = $_SESSION['userId'];
 
     $stmt = $conn->prepare("SELECT a.*, b.username AS 'booker', c.username AS 'poster', d.imagePath, d.listingName, d.startdate, d.enddate, d.valid
     FROM ((( venuehive.bookings a

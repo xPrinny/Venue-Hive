@@ -30,6 +30,7 @@
                 $listingPrice = $row["listingPrice"];
                 $username = $row["username"];
                 $listingImg = $row["imagePath"];
+                $posterId = $row["posterId"];
         ?>
 
         <header class="masthead">
@@ -75,12 +76,14 @@
                                         </div>
                                         <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
                                         <input type="hidden" name="bookingDate" value="<?php echo $bookingDate ?>">
+                                        <input type="hidden" name="posterId" id="posterId" value="<?php echo $posterId?>">
                                         <input type="hidden" name="paymentType" value="cc">
                                     </form>
                                 </div>
                                 <form id="codForm" action="confirmation.php" method="post">
                                     <input type="hidden" name="listingId" id="listingId" value="<?php echo $listingId ?>">
                                     <input type="hidden" name="bookingDate" id="bookingDate" value="<?php echo $bookingDate ?>">
+                                    <input type="hidden" name="posterId" id="posterId" value="<?php echo $posterId?>">
                                     <input type="hidden" name="paymentType" id="paymentType" value="cod">
                                 </form>
                             </div>

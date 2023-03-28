@@ -12903,6 +12903,29 @@ body {
   color: #ffbf24;
 }
 
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+	color: #00FF00;
+}
+
+.valid:before {
+	position: relative;
+	left: -35px;
+	content: "\002714";
+}
+
+/* Add a red text color and a cross when the requirements are wrong */
+.invalid {
+	color: #FF0000;
+}
+
+.invalid:before {
+	position: relative;
+	left: -35px;
+	content: "\002716";
+}
+
+
 /* contact us and contact form page 
 .contact-us {
   background-color: #ffbf24;
