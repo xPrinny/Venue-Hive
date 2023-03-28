@@ -5,7 +5,8 @@
         <?php include "head.inc.php"; ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-tagsinput@0.8.0/dist/bootstrap-tagsinput.css" rel="stylesheet">
         <style>
             .form-group{
                 margin-bottom: 20px;
@@ -19,21 +20,18 @@
             <div class="container-md">
                         <div class="card shadow">
                             <div class="card-body" id="filters">
-                                <form action="process_listing.php" method="post" novalidate class="my-form">
+                                <form action="process_listing.php" method="post" class="my-form">
                                 <div class="form-group">
                                     <label for="listingName">Listing Name:</label>
                                     <input class="form-control" type="text" id="listingName" maxlength="45" name="listingName" placeholder="Enter listing name">
                                 </div>
-
-                                <form action="upload.php" method="post" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="images">Images:</label>
-                                        <input type="file" name="images[]" multiple>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Upload Images</button>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <label for="images">Images:</label>
+                                    <input type="file" name="images[]" multiple>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Upload Images</button>
+                                </div>                             
                                 <div class="form-group">
                                     <label for="listingPrice">Listing Price:</label>
                                     <input class="form-control" type="number" id="listingPrice" required step="0.01" name="listingPrice" placeholder="Enter listing price">
@@ -71,8 +69,9 @@
                                 </script>
                                 <div>
                                     <label for="tags">Tags:</label>
-                                    <input class="form-control" type="text" id="tags" name="tags" placeholder="Enter tags" data-role="taginput">
+                                    <input class="form-control" type="text" id="tags" name="tags" placeholder="Enter tags" data-bs-role="tagsinput">
                                 </div>
+                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                                 <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Create Listing</button>
                                 </div>
