@@ -12902,3 +12902,149 @@ body {
 .rating i.bi-star-fill {
   color: #ffbf24;
 }
+
+/* contact us and contact form page 
+.contact-us {
+  background-color: #ffbf24;
+  color: #392c00;
+  width: 50%;
+  float: left;
+}
+
+.contact-form {
+  background-color: #e6e6e6;
+  width: 50%;
+  float: right;
+}
+
+a[href="mailto:support@venuehive.com"] {
+  color: #000;
+}*/
+
+/*about us*/
+ .hero {
+  background-color: #ffba00;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .hero h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .hero p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+  
+  .about {
+  background-color: #ffd34b;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .about h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .about p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+  
+  .abtfeatured1 {
+  background-color: #d0b240;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .abtfeatured1 h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .abtfeatured1 p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+
+  .abtfeatured2 {
+  background-color: #ebd479;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .abtfeatured2 h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .abtfeatured2 p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+
+  .abtfeatured3 {
+  background-color: #fff7b0;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .abtfeatured3 h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .abtfeatured3 p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+
+  .abtfeatured4 {
+  background-color: #ffffe5;
+  padding: 4rem;
+  text-align: center;
+  }
+  
+  .abtfeatured4 h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #333;
+  }
+  
+  .abtfeatured4 p {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 2rem;
+  }
+
+  /* FAQ */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .faq-box {
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+    
+  .faqcolor {
+    color: #71302a;
+  }
+  
