@@ -13,8 +13,8 @@
             <div class="container px-5">
                 <?php
                     // Retrieve the listing information from the database
-                    $listingId = $_GET['id'];
-                    $sql = "SELECT * FROM listings WHERE id = $listingId";
+                    $listingId = $_GET['listingId'];
+                    $sql = "SELECT * FROM venuehive.listings WHERE id = $listingId";
                     $result = mysqli_query($conn, $sql);
                     $listing = mysqli_fetch_assoc($result);
                 ?>
@@ -62,13 +62,14 @@
                
                      <script>
                        flatpickr('#bookingDate', {
-                         dateFormat: "Y-m-d",
+                         mode: "range",
+                         dateFormat: "Y-m-d"
                        });
                      </script>
                
                      <div class="form-group">
                        <button class="btn btn-primary" type="submit">Save Changes</button>
-                       </div>
+                     </div>
                 </form>
             </div>
         </header>
