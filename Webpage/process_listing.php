@@ -1,4 +1,5 @@
 <?php
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $listingOwnerId = $_SESSION["userId"];
@@ -10,7 +11,7 @@
         }
 
         // Handle the file upload
-        $target_dir = "var/www/html/javier-test/assets/uploads";
+        $target_dir = "/var/www/html/javier-test/assets/uploads";
         $file_names = array();
         foreach ($_FILES["images"]["name"] as $key => $value) {
             $target_file = $target_dir . basename($_FILES["images"]["name"][$key]);
@@ -98,6 +99,7 @@
             include "utils/loadDB.php"; 
             // Bind the parameters with the sanitized form data
             $imagePath = implode(',', $file_names);
+            $success = true;
             
             if ($success) {
                 $stmt = $conn->prepare("INSERT INTO venuehive.listings (listingOwnerId, listingName, listingPrice, listingInfo, imagePath, imagePathB, timestamp, address, category, location, startdate, enddate, valid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
