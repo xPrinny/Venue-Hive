@@ -13,7 +13,7 @@
     include "loadDB.php";
 
     if ($success) {
-        $stmt = $conn->prepare("SELECT password FROM members WHERE username = '" . $username . "';");
+        $stmt = $conn->prepare("SELECT * FROM members WHERE username = '" . $username . "';");
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows == 0) {
@@ -24,6 +24,7 @@
         $stmt->close();
 
         $pwdHash = $result["password"];
+        $memberId = $result["memberId"];
 
         // Destroy and make a new session
         session_start();
@@ -37,6 +38,7 @@
         $_SESSION['create_time'] = time();
         $_SESSION['username'] = $username;
         $_SESSION["loginStatus"] = "success";
+        $_SESSION["userId"] = $memberId;
 
         header("Location: /");
         die();

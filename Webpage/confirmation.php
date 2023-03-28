@@ -20,6 +20,7 @@
             $bookingDate = $_POST['bookingDate'];
             $paymentType = $_POST['paymentType'];
             $ccno = substr($_POST['ccno'], -4);
+            $posterId = $_POST['posterId'];
 
             global $listingName, $listingPrice; //$username
 
@@ -48,8 +49,6 @@
         ?>
 
         <?php
-            global $bookingId, $memberName, $bListingName, $bListingPrice;
-
             include "utils/loadDB.php";
 
             if ($success) {
@@ -58,8 +57,8 @@
 
             $bookingId = $row["bookingId"];
             $memberName = $row["lastName"];
-            $bListingName = $row["listingName"];
-            $bListingPrice = $row["listingPrice"];
+            $listingName = $row["listingName"];
+            $listingPrice = $row["listingPrice"];
             $bookingDate = $row["bookingDate"];
             
             $conn->close();
@@ -79,11 +78,11 @@
                                     <?php if ($paymentType == "cc") {?>
                                         <p>Payment method: Credit Card</p>
                                         <p>Card number: XXXX XXXX XXXX <?php echo $ccno?></p>
-                                        <p>Amount paid: <?php echo $bListingPrice?></p>
+                                        <p>Amount paid: <?php echo $listingPrice?></p>
                                     <?php } else if ($paymentType == "cod") { ?>
                                         <p>Payment method: Cash on Delivery</p>
                                         <p>Date to make payment: <?php echo $bookingDate?></p>
-                                        <p>Amount to be paid: <?php echo $bListingPrice?></p>
+                                        <p>Amount to be paid: <?php echo $listingPrice?></p>
                                     <?php } ?>
                                 </div>
                                 <input type="button" class="btn btn-primary ms-2 mb-2 mt-2" value="Print Receipt" onclick="PrintDiv();" />
@@ -108,9 +107,9 @@
                                         <div class="card itemBorderless">
                                             <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="...">
                                             <div class="card-body" id="card-body-text">
-                                                <p class="card-text"><?php echo $bListingName; ?></p>
+                                                <p class="card-text"><?php echo $listingName; ?></p>
                                                 <p class="card-text"><?php echo $bookingDate; ?></p>
-                                                <p class="card-text lead fs-6">$ <?php echo $bListingPrice; ?></p>
+                                                <p class="card-text lead fs-6">$ <?php echo $listingPrice; ?></p>
                                             </div>
                                         </div>
                                 </div>
