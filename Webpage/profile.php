@@ -21,8 +21,13 @@
                     $firstName = $result["firstName"];
                     $lastName = $result["lastName"];
                     $profilePicture = $result["profilePicture"];
-                    
+
+                    include "utils/getUserListings.php";
+                    $rowUserList = $rows;
                     include "utils/getReviews.php";
+                    $rowReviews = $rows;
+                    include "utils/getUserBookings.php";
+                    $rowUserBookings = $rows;
                 } else {
                     echo ' <header class="masthead"><div class="container px-5 mt-4"><h2>Error!</h2>User does not exist.</div></header>';
                     include "footer.php";
@@ -70,16 +75,7 @@
                                 <hr>
                                 <div class="row align-items-start" id="listings">
                                     <?php
-                                        global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc, $listingImg;
-                                        include "utils/loadDB.php";
-
-                                        if ($success) {
-                                            include "utils/getUserListings.php";
-                                        }
-
-                                        $conn->close();
-
-                                        foreach ($rows as $row) {
+                                        foreach ($rowUserList as $row) {
                                             $listingId = $row["listingId"];
                                             $listingName = $row["listingName"];
                                             $listingPrice = $row["listingPrice"];
@@ -110,12 +106,11 @@
                                     <?php }?>
                                 </div>
                             </div>
-                            <div class="card-body" id="reviewListings" style="display: none;">
-                                <h5 class="card-title">Reviews</h5>
-                                <hr>
+                            <div class="card-body collapse" id="reviewListings">
+                                <h5 class="card-title">Reviews</h5><hr/>
                                 <?php
                                     $brCount = 1;
-                                    foreach ($rows as $row) {
+                                    foreach ($rowReviews as $row) {
                                         $ratingStar = $row["ratingStar"];
                                         $ratingComment = $row["ratingComment"];
                                         $reviewOwner = $row["reviewOwner"];
@@ -128,7 +123,7 @@
                                         if ($reviewOwner == $user) {
                                             echo $recievedUser . '</a></u> | review from Buzzers';
                                         } else {
-                                            echo $reviewOwner . '</a></u> | review from Host (tbc)';
+                                            echo $reviewOwner . '</a></u> | review from Host';
                                         }
                                         echo '<br>';
                                         for($x=0; $x<5; $x++) {
@@ -147,18 +142,11 @@
                                     }
                                 ?>
                             </div>
-                            <div class="card-body" id="profileOrders" style="display: none;">
+                            <div class="card-body collapse" id="profileOrders">
                                 <h5 class="card-title">My Orders</h5>
                                 <hr>
                                 <?php
-                                    include "utils/loadDB.php";
-
-                                    if ($success) {
-                                        include "utils/getUserBookings.php";
-                                    }
-                                    $conn->close();
-                                    
-                                    foreach ($rows as $row) {
+                                    foreach ($rowUserBookings as $row) {
                                         $posterUn = $row["poster"];
                                         $bookerUn = $row["booker"];
                                         $listingName = $row["listingName"];

@@ -3,6 +3,8 @@
     <div class="container p-4">
         <div class="text-white-50 small">
             <div class="mb-2">&copy; VenueHive. All Rights Reserved.</div>
+            <a href="aboutus.php">About Us</a>
+            <span class="mx-1">&middot;</span>
             <a href="privacypolicy.php">Privacy Policy</a>
             <span class="mx-1">&middot;</span>
             <a href="contactus.php">Contact Us</a>

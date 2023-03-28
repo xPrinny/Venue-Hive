@@ -30,6 +30,20 @@
             $conn->close();
         ?>
 
+        <?php
+            if ($_SESSION["modifyCode"] == 1) {
+                echo '<div class="alert alert-success loginAlert" role="alert">Update succesful!</div>';
+                $_SESSION["modifyCode"] = null;
+            } else if ($_SESSION["modifyCode"] == 2) {
+                echo '<div class="alert alert-warning loginAlert" role="alert">Password not updated!</div>';
+                $_SESSION["modifyCode"] = null;
+            } else if ($_SESSION["modifyCode"] == 3) {
+                echo '<div class="alert alert-danger loginAlert" role="alert">Update failed!</div>';
+                $_SESSION["modifyCode"] = null;
+            }
+        ?>
+
+
         <header class="masthead">
             <div class="container px-5">
                 <div class="row gx-5">
@@ -73,11 +87,11 @@
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputPassword" class="mb-2">New Password</label>
-                                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="New Password">
+                                            <input type="password" class="form-control"" id="inputPassword" name="inputPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" title="Must contain at least one uppercase and lowercase letter, one number, 8 to 16 characters, and does not contain '<>'." placeholder="New Password">
                                         </div>
                                         <div class="form-group col-md-5 mb-2">
                                             <label for="inputPasswordConfirm" class="mb-2">New Password Confirmation</label>
-                                            <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirmation">
+                                            <input type="password" class="form-control" id="inputPasswordConfirm" name="inputPasswordConfirm" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" placeholder="Confirmation">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 mb-2">
@@ -104,14 +118,33 @@
                                 </form>
                                 <hr class="hr-med">
                                 <label for="accountDelete" class=" mb-2">Account deletion</label><br>
-                                Are you sure you want to delete your whole account? This action cannot be undone and you'll lose everything you have gathered in your account.<br><br>
-                                <button type="submit" class="btn btn-danger">Delete Account</button>
+                                Are you sure you want to delete your whole account?<br><br>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="deleteModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-customYellow p-4">
+                                <h5 class="modal-title font-alt" id="deleteListingTitle">Delete Account</h5>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0 p-4">
+                                <h4>Are you sure you want to delete your account?</h4>
+                                Are you sure you want to delete your whole account? This action cannot be undone and you'll lose everything you have gathered in your account.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-danger" id="deleteAccountBtn">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </header>
+
         <!-- Footer-->
         <?php include "footer.php";?>
         <!-- Bootstrap core JS-->

@@ -31,8 +31,8 @@ if (empty($email)) {
     }
 }
 
-$pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$pwd_confirm = filter_input(INPUT_POST, 'pwd_confirm', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$pwd_confirm = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 if (empty($pwd) || empty($pwd_confirm)) {
     $errorMsg .= "Password and confirmation are required.<br>";
     $success = false;
@@ -57,17 +57,17 @@ function sanitize_input($data) {
 }
 
 function saveMemberToDB($fname, $lname, $username, $email, $pwd_hashed) {
-    $config = parse_ini_file('../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    include "utils/loadDB.php";
 
-    if ($conn->connect_error) {
-        $errorMsg = "Connection failed: " . $conn->connect_error;
-        $success = false;
-    } else {
-        $stmt = $conn->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $fname, $lname, $username, $email, $pwd_hashed);
+    if ($success) {
+            $stmt = $conn->prepare("INSERT INTO members (firstName, lastName, username, email, password, profilePicture, newsletter)
+            VALUES (?, ?, ?, ?, ?, ?, 0)");
+            $profilePic = "assets/userprofile/default.jpg";
+            $stmt->bind_param("ssssss", $fname, $lname, $username, $email, $pwd_hashed, $profilePic);
+        echo $stmt->errno;
         if (!$stmt->execute()) {
-            $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            // $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+            $errorMsg = "Something went wrong with the servers. Please try again later.";
             $success = false;
         }
         $stmt->close();
@@ -86,14 +86,15 @@ include "head.inc.php";
 
 <?php
 include "navbar.php";
+include "login.php";
 ?>
-    <main class="container">
+    <main class="container mt-5">
         <hr>
 <?php
 if ($success) {
     echo "<h2>Your registration is successful!</h2>";
     echo "<h4>Thank you for signing up, " . $fname . " " . $lname . ".</h4>";
-    echo "<a href='login.php' class='btn btn-success'>Log in</a>";
+    echo "<a href='#' data-bs-toggle='modal' data-bs-target='#feedbackModal'>Log In</a>";
 } else {
     echo "<h2>Oops!</h2>";
     echo "<h4>The following errors were detected:</h4>";
@@ -107,4 +108,17 @@ if ($success) {
 include "footer.php";
 ?>
 
+<!-- Tempfix for Footer -->
+<style>
+footer {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+</style>
+
+<!-- Bootstrap core JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS -->
+<script src="js/scripts.js"></script>
 </html>

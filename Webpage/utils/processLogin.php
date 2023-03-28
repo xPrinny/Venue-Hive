@@ -3,6 +3,7 @@
     $username = filter_input(INPUT_POST, 'uname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $pwdHash = "";
+    $memberId = "";
 
     if ($username == null || $pwd == null) {
         header("Location: /");
@@ -13,7 +14,7 @@
     include "loadDB.php";
 
     if ($success) {
-        $stmt = $conn->prepare("SELECT * FROM members WHERE username = '" . $username . "';");
+        $stmt = $conn->prepare("SELECT memberId, password FROM members WHERE username = '" . $username . "';");
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows == 0) {
@@ -37,8 +38,8 @@
         // Store session data
         $_SESSION['create_time'] = time();
         $_SESSION['username'] = $username;
-        $_SESSION["loginStatus"] = "success";
         $_SESSION["userId"] = $memberId;
+        $_SESSION["loginStatus"] = "success";
 
         header("Location: /");
         die();
