@@ -25,7 +25,11 @@
         </div>
         <div class="faq-box" role="region" aria-labelledby="cancel-question">
           <h2 id="cancel-question" class="faqcolor">What if I need to cancel or reschedule my reservation?</h2>
-          <p>If you need to cancel or reschedule your reservation, please contact VenueHive support as soon as possible to make the necessary arrangements.</p>
+          <p>If you need to cancel or reschedule your reservation, please contact the venue host as soon as possible to make the necessary arrangements.</p>
+        </div>
+        <div class="faq-box" role="region" aria-labelledby="payment-question">
+          <h2 id="payment-question" class="faqcolor">What payment methods do you accept?</h2>
+          <p>VenueHive accept payments visa credit card and debit card.</p>
         </div>
       </div>
     </header>
