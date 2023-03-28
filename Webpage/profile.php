@@ -52,11 +52,11 @@
                             </div>
                             <div class="card-body">
                                 <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item list-group-item-action active" id="item1">Listings</a>
-                                    <a href="#" class="list-group-item list-group-item-action" id="item2">Reviews</a>
+                                    <a href="#itemListings" class="list-group-item list-group-item-action active" id="item1">Listings</a>
+                                    <a href="#reviewListings" class="list-group-item list-group-item-action" id="item2">Reviews</a>
                                     <?php
                                         if ($username === $_SESSION['username']) {?>
-                                            <a href="#" class="list-group-item list-group-item-action" id="item3">My Orders</a>
+                                            <a href="#profileOrders" class="list-group-item list-group-item-action" id="item3">My Orders</a>
                                     <?php }
                                     ?>
                                 </div>
@@ -67,7 +67,7 @@
                         <div class="card shadow" id="userProfile">
                             <div class="card-body" id="itemListings">
                                 <h5 class="card-title">Listings</h5>
-                                <hr/>
+                                <hr>
                                 <div class="row align-items-start" id="listings">
                                     <?php
                                         global $listingId, $listingName, $listingPrice, $listingInfo, $listingInfo, $listingDesc, $listingImg;
@@ -111,7 +111,8 @@
                                 </div>
                             </div>
                             <div class="card-body" id="reviewListings" style="display: none;">
-                                <h5 class="card-title">Reviews</h5><hr/>
+                                <h5 class="card-title">Reviews</h5>
+                                <hr>
                                 <?php
                                     $brCount = 1;
                                     foreach ($rows as $row) {
@@ -196,10 +197,16 @@
                                             <div class="row pt-5">
                                                 <div class="col-lg-4"></div>
                                                 <div class="col-lg-5">
-                                                    <button class="btn btn-primary">View Booking Confirmation</button>
+                                                    <form action="confirmation.php" method="post">
+                                                        <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $bookingId; ?>"/>
+                                                        <input type="submit" value="View Booking Confirmation" class="btn btn-primary">
+                                                    </form>
                                                 </div>
                                                 <div class="col-lg-3">
-                                                    <button class="btn btn-primary">Write Review</button>
+                                                    <form action="writeReview.php" method="post">
+                                                        <input type="hidden" name="bookingIdR" id="bookingIdR" value="<?php echo $bookingId; ?>"/>
+                                                        <input type="submit" value="Write Review" class="btn btn-primary">
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

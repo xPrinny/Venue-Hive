@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="card-body" id="creditCardInfo" style="display: none;">
                                     <hr class="hr-sm">
-                                    <form id="ccForm" action="confirmation.php" method="post">
+                                    <form id="ccForm" action="bookingConfirmed.php" method="post">
                                         <div class="mb-3">
                                           <label for="creditCardInput" class="form-label">Card Number</label>
                                           <input class="form-control" type="tel" name="ccno" placeholder="XXXXXXXXXXXXXXXX" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$" title="Please enter a Credit Card number." required>
@@ -80,7 +80,7 @@
                                         <input type="hidden" name="paymentType" value="cc">
                                     </form>
                                 </div>
-                                <form id="codForm" action="confirmation.php" method="post">
+                                <form id="codForm" action="bookingConfirmed.php" method="post">
                                     <input type="hidden" name="listingId" id="listingId" value="<?php echo $listingId ?>">
                                     <input type="hidden" name="bookingDate" id="bookingDate" value="<?php echo $bookingDate ?>">
                                     <input type="hidden" name="posterId" id="posterId" value="<?php echo $posterId?>">

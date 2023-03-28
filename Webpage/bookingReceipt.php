@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Venue Hive - Confirmation</title>
+        <title>Venue Hive - Booking Receipt</title>
         <?php include "head.inc.php"; ?>
     </head>
     <body id="page-top">
@@ -13,53 +13,22 @@
 
         <?php include "authCheck.php"; ?>
 
-        <?php 
-            global $bookingDate, $paymentType, $ccno;
-
-            $listingId = $_POST['listingId'];
-            $bookingDate = $_POST['bookingDate'];
-            $paymentType = $_POST['paymentType'];
-            $ccno = substr($_POST['ccno'], -4);
-            $posterId = $_POST['posterId'];
-
-            global $listingName, $listingPrice; //$username
-
-            include "utils/loadDB.php";
-
-            if ($success) {
-                include "utils/getBookedListing.php";
-            }
-            $conn->close();
-
-            $listingName = $row["listingName"];
-            $listingPrice = $row["listingPrice"];
-            $posterId = $row["listingOwnerId"];
-            $listingImg = $row["imagePath"];
-        ?>
-
-        <?php
-            global $bookerId, $bookingState, $bookingTimestamp;
-
-            include "utils/loadDB.php";
-
-            if ($success) {
-                include "utils/newBooking.php";
-            }
-            $conn->close();
-        ?>
-
         <?php
             include "utils/loadDB.php";
+
+            $bookingId = $_POST["bookingId"];
 
             if ($success) {
                 include "utils/getBookingInfo.php";
             }
 
-            $bookingId = $row["bookingId"];
+            // $bookingId = $row["bookingId"];
             $memberName = $row["lastName"];
             $listingName = $row["listingName"];
             $listingPrice = $row["listingPrice"];
             $bookingDate = $row["bookingDate"];
+            $paymentType = $row["paymentType"];
+            $listingImg = $row["imagePath"];
             
             $conn->close();
         ?>
@@ -70,14 +39,13 @@
                     <div class="col-lg-9">
                         <div class="card shadow" id="paymentBody">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $memberName?>, your booking is confirmed!</h5>
+                                <h5 class="card-title"><?php echo $memberName?>, here is your receipt!</h5>
                                 <hr>
                                 <h5 class="card-text">Your Booking ID is: <?php echo $bookingId?>.</h5>
                                 <div class="card-body" id="bookingReceipt">
-                                    <p>Below is your receipt:</p>
+                                    <p>Your payment details:</p>
                                     <?php if ($paymentType == "cc") {?>
                                         <p>Payment method: Credit Card</p>
-                                        <p>Card number: XXXX XXXX XXXX <?php echo $ccno?></p>
                                         <p>Amount paid: <?php echo $listingPrice?></p>
                                     <?php } else if ($paymentType == "cod") { ?>
                                         <p>Payment method: Cash on Delivery</p>
