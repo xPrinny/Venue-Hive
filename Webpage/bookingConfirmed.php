@@ -33,9 +33,9 @@
                             <div class="card-body">
                                 <h5 class="card-title">Your Booking is Confirmed!</h5>
                                 <hr>
-                                <div class="row d-flex justify-content-between">
+                                <div class="row d-flex ms-2 me-2">
                                     <div class="col">
-                                        <a href="index.php" class="btn btn-primary">Back to Homepage</a>
+                                        <a href="index.php" class="btn customYellowBorderBtn">Back to Homepage</a>
                                     </div>
                                     <div class="col">
                                         <form action="bookingReceipt.php" method="post">
@@ -44,7 +44,7 @@
                                         </form>
                                     </div>
                                     <div class="col">
-                                        <a href="allListings.php" class="btn btn-primary">View More Listings</a>
+                                        <a href="allListings.php" class="btn customYellowBorderBtn">View More Listings</a>
                                     </div>
                                 </div>
                             </div>
