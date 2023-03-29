@@ -96,7 +96,7 @@
                                 <hr/>
                                 <div class="row align-items-start">
                                         <div class="card itemBorderless">
-                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" alt="...">
+                                            <img src="<?php echo $listingImg?>" class="card-img-top card-img-thumbnail" style="object-fit:cover;" alt="...">
                                             <div class="card-body" id="card-body-text">
                                                 <p class="card-text"><?php echo $listingName; ?></p>
                                                 <p class="card-text"><?php echo $bookingDate; ?></p>
