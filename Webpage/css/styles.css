@@ -12922,6 +12922,9 @@ a[href="mailto:support@venuehive.com"] {
   color: #000;
 }
 
+li::marker {
+  color: #ffbf24; /* Change the color here */
+}
 
 /*about us*/
 .hero {

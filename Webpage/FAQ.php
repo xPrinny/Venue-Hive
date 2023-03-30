@@ -11,7 +11,7 @@
   <?php include "navbar.php"; ?>
   <!-- Login Modal -->
   <?php include "login.php"; ?>
-  <main role="main">
+  <main>
     <header class="masthead">
       <div class="faq-container">
         <h1>Frequently Asked Questions</h1>

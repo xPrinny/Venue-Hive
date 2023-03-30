@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">>
+<html lang="en">
 
 <head>
     <title>About Venue Hive</title>
-    <?php include "head.inc.php" ?>
+    <?php include "head.inc.php"; ?>
 </head>
 
 <body>
@@ -12,7 +12,6 @@
         <?php include "navbar.php"; ?>
         <!-- Login Modal -->
         <?php include "login.php"; ?>
-
 
         <header class="masthead">
             <section class="hero">
@@ -57,8 +56,6 @@
                 </div>
             </section>
 
-
-
         </header>
         <!--Footer-->
         <?php include "footer.php"; ?>
@@ -68,4 +65,5 @@
         <script src="js/scripts.js"></script>
     </main>
 </body>
+
 </html>

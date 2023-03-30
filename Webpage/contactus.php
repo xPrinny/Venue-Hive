@@ -26,13 +26,13 @@
                                     <p>Please fill out the form. We will get back to your inquiry as soon as possible.</p>
                                     <h2>VenueHive Contact Information</h2>
                                     <ul>
-                                        Email: <a href="mailto:support@venuehive.com">support@venuehive.com</a>
-                                        <br>Phone: (65) 687 432</br>
+                                        <li>Email: <a href="mailto:support@venuehive.com">support@venuehive.com</a></li>
+                                        <li>Phone: (65) 687 432</li>
                                     </ul>
                                 </section>
                             </div>
                             <div class="contact-form">
-                                <section id="contact-form-section" role="region" aria-label="Contact Form">
+                                <section id="contact-form-section" aria-label="Contact Form">
                                     <h2>Contact Form</h2>
                                     <form id="contact-form" method="post">
                                         <div class="form-group">
@@ -71,13 +71,14 @@
             </div>
         </header>
 
-        <!--footer-->
+        <!--Footer-->
         <?php include "footer.php"; ?>
         <!-- Bootstrap core JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS -->
         <script src="js/scripts.js"></script>
     </main>
+
 </body>
 
 </html>
