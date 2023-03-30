@@ -70,7 +70,7 @@
                         <div class="carousel-item <?php echo $activeClass ?>">
                             <a href="listing?listingId=<?php echo $listingId?>" style="text-decoration: none; color:white">
                                 <img src="<?php echo $listingImg?>" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block boxed">
                                     <h5><?php echo $listingName?></h5>
                                     <p><?php echo $listingDesc?></p>
                                 </div>
