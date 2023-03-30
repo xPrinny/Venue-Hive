@@ -11,7 +11,7 @@
         <!-- Login Modal-->
         <?php include "login.php"; ?>
 
-        <?php include "authCheck.php"; ?>
+        <?php include "utils/authCheck.php"; ?>
 
         <?php
             include "utils/loadDB.php";
@@ -37,6 +37,7 @@
                     $role = "Poster";
                 } else {
                     // add html to show invalid
+                    echo "You can't leave a review for this listing!";
                 }
             }
 
@@ -51,7 +52,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Leave a Review for <?php echo $receiverUn?></h5>
                                 <hr>
-                                <form action="utils/postReview.php" method="post">
+                                <form action="postReview.php" method="post">
                                     <input type="hidden" name="receiverId" id="receiverId" value="<?php echo $receiverId?>">
                                     <input type="hidden" name="listingId" id="listingId" value="<?php echo $listingId?>">
                                     <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $bookingId?>">
@@ -138,7 +139,7 @@
                             bookingId: bookingId
                         },
                         success:function(response){
-                            window.location.href = "/profile?u=<?php $_SESSION["username"]?>#orders";
+                            window.location.href = "/profile?u=<?php echo $_SESSION["username"] ?>";
                         }
                     });
                 });

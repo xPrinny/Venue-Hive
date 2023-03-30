@@ -1,14 +1,15 @@
 <?php
+    session_start(); 
     include "utils/loadDB.php";
 
     if ($success) {        
         $reviewId = null;
         $reviewPosterId = $_SESSION["userId"];
-        $reviewReceiverId = $_GET["receiverId"];
-        $listingId = $_GET["listingId"];
-        $bookingId = $_GET["bookingId"];
-        $ratingStar = $_GET["rating"];
-        $ratingComment = $_GET["reviewInput"];
+        $reviewReceiverId = $_POST["receiverId"];
+        $listingId = $_POST["listingId"];
+        $bookingId = $_POST["bookingId"];
+        $ratingStar = $_POST["rating"];
+        $ratingComment = $_POST["reviewInput"];
 
         // Prepare the statement:
         $stmt = $conn->prepare("INSERT INTO venuehive.reviews (reviewOwnerId, reviewRecieveId, reviewListId, ratingStar, ratingComment, reviewBookId) VALUES (?, ?, ?, ?, ?, ?);");
@@ -23,4 +24,7 @@
         $stmt->close();
     }
     $conn->close();
+    
+    header("Location: /profile?u=".$_SESSION["username"]);
+    exit;
 ?>

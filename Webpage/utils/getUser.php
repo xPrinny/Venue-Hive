@@ -13,6 +13,6 @@
         $errorMsg = "No listings in database!";
         $success = false;
     }
-    $result =  $result->fetch_assoc();
+    $row =  $result->fetch_assoc();
     $stmt->close();
 ?>

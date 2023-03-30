@@ -18,9 +18,9 @@
             if ($success) {
                 include "utils/getUser.php";
                 if ($success) {
-                    $firstName = $result["firstName"];
-                    $lastName = $result["lastName"];
-                    $profilePicture = $result["profilePicture"];
+                    $firstName = $row["firstName"];
+                    $lastName = $row["lastName"];
+                    $profilePicture = $row["profilePicture"];
 
                     include "utils/getUserListings.php";
                     $rowUserList = $rows;
@@ -183,17 +183,17 @@
                                             <h6>Booker Username: <?php echo $bookerUn?></h6>
                                             <h6>Booking Date: <?php echo $bookingDate?></h6>
                                             <div class="row pt-5">
-                                                <div class="col-lg-4"></div>
-                                                <div class="col-lg-5">
-                                                    <form action="confirmation.php" method="post">
-                                                        <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $bookingId; ?>"/>
-                                                        <input type="submit" value="View Booking Confirmation" class="btn btn-primary">
-                                                    </form>
-                                                </div>
+                                            <div class="col-lg-4"></div>
                                                 <div class="col-lg-3">
                                                     <form action="writeReview.php" method="post">
                                                         <input type="hidden" name="bookingIdR" id="bookingIdR" value="<?php echo $bookingId; ?>"/>
                                                         <input type="submit" value="Write Review" class="btn btn-primary">
+                                                    </form>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <form action="bookingReceipt.php" method="post">
+                                                        <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $bookingId; ?>"/>
+                                                        <input type="submit" value="View Booking Confirmation" class="btn btn-primary">
                                                     </form>
                                                 </div>
                                             </div>
