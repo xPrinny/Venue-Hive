@@ -1,5 +1,6 @@
 <?php 
-// temp workaround, just leave it first
+    include "utils/authCheck.php";
+
     $listingId = $_POST['listingId'];
 
     // prepare statement. gets all info from listings table for relevant listing Id

@@ -1,4 +1,6 @@
 <?php 
+    include "utils/authCheck.php";
+
    $stmt = $conn->prepare("SELECT a.*, b.* FROM venuehive.reviews a
            INNER JOIN listings b ON a.reviewListId = b.listingId
            ORDER BY RAND() LIMIT 3");

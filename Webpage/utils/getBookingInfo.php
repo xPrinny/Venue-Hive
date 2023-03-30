@@ -1,4 +1,6 @@
 <?php 
+    include "utils/authCheck.php";
+
     // prepare statement. gets all info from listings table for relevant listing Id
     $stmt = $conn->prepare("SELECT a.*, b.lastName,  b.username AS 'booker', c.username AS 'poster', 
     d.listingName, d.listingPrice, d.imagePath FROM (((venuehive.bookings a 

@@ -1,4 +1,5 @@
 <?php 
+    include "utils/authCheck.php";
     include "utils/loadDB.php";
 
     if (isset($_POST['listingId'])) {

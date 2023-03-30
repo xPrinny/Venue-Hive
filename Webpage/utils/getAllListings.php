@@ -1,4 +1,5 @@
-<?php // temp workaround, just leave it first
+<?php
+    include "utils/authCheck.php";
 
     $stmt = $conn->prepare("SELECT * FROM venuehive.listings;");
     $stmt->execute();

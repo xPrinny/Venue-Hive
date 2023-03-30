@@ -1,4 +1,5 @@
 <?php 
+    include "utils/authCheck.php";
     include "utils/loadDB.php";
 
 // temp workaround, just leave it first

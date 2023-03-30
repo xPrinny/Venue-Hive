@@ -1,4 +1,6 @@
 <?php 
+    include "utils/authCheck.php";
+    
     $listingId = $_GET['listingId'];
     $query = "SELECT startdate, enddate FROM listings WHERE listingId = $listingId";
     $result = mysqli_query($conn, $query);

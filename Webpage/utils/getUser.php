@@ -1,4 +1,6 @@
-<?php 
+<?php
+    include "utils/authCheck.php";
+
     // Prepare statement that gets user
     $username = filter_input(INPUT_GET, "u");
     if ($_SESSION['fromSetting']) {

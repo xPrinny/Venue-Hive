@@ -1,4 +1,5 @@
 <?php 
+    include "utils/authCheck.php";
     $username = $_GET['u'];
 
     // prepare statement. gets all info from listings table for relevant listing Id

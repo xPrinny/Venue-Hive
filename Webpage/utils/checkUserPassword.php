@@ -1,4 +1,6 @@
-<?php 
+<?php
+    include "utils/authCheck.php";
+
     // Prepare statement that gets user
     $stmt = $conn->prepare("SELECT password FROM members WHERE username = '" . $username . "';");
     $stmt->execute();

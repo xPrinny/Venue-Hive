@@ -1,5 +1,6 @@
 <?php
     session_start(); 
+    include "utils/authCheck.php";
     include "utils/loadDB.php";
 
     if ($success) {        

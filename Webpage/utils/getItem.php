@@ -1,4 +1,6 @@
    <?php 
+    include "utils/authCheck.php";
+
     // Prepare statement that gets item information
     $stmt = $conn->prepare("SELECT listingName, listingPrice FROM listings WHERE listingId = " . filter_input(INPUT_GET, "order") . ";");
     $stmt->execute();
