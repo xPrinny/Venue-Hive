@@ -120,6 +120,8 @@
                                             $listingImg = $row["imagePath"];
                                             $listingInfo = $row["listingInfo"];
 
+                                            include "utils/updateValidity.php";
+
                                             if(strlen($listingInfo) > 200){
                                                 $listingDesc = substr($listingInfo,0,200) . " ...";
                                             }

@@ -160,6 +160,8 @@
                                         $listingId = $row["listingId"];
                                         $posterId = $row["posterId"];
                                         $bookerId = $row["bookerId"];
+
+                                        include "utils/updateBookingState.php";
                                 ?>
                                 <div class="card mt-1 mb-3">
                                     <div class="row card-header pt-3 ms-0 me-0">
