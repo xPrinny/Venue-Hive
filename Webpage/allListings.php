@@ -138,7 +138,7 @@
                                                     <p>
                                                         <?php echo $listingDesc;?><br>
                                                     </p>      
-                                                <h5 class="card-title">Price: <?php echo $listingPrice;?></h5>
+                                                <h5 class="card-title">Price: S$<?php echo $listingPrice;?></h5>
                                             </div>
                                             </a>
                                         </div>

@@ -23,6 +23,7 @@
                     $listingPrice = $row["listingPrice"];
                     $listingInfo = $row["listingInfo"];
                     $listingImg = $row["imagePath"];
+                    $listingImg2 = $row["imagePathB"];
                     $listingTag = $row["listingTag"];
                     $userId = $row["listingOwnerId"];
                     $username = $row["username"];
@@ -48,7 +49,7 @@
                         </div>
                         <div class="listingImg-container">
                             <img src="<?php echo $listingImg ?>" style="height:100%; object-fit:contain;" alt="<?php echo $listingName?> image 1">
-                            <img src="<?php echo $listingImg ?>" style="height:100%; object-fit:contain;" alt="<?php echo $listingName?> image 2">
+                            <img src="<?php echo $listingImg2 ?>" style="height:100%; object-fit:contain;" alt="<?php echo $listingName?> image 2">
                         </div> 
                     </div>
                 </div>
@@ -125,7 +126,7 @@
                                             <form action="checkout.php" method="post" id="dateForm">
                                                 <div>
                                                     <input type="hidden" name="listingId" value="<?php echo $listingId ?>">
-                                                    <input type="hidden" name="listingPrice" value="<?php echo $listingPrice ?>">
+                                                    <input type="hidden" name="listingPrice" value="S$<?php echo $listingPrice ?>">
                                                     <label for="bookingDate">Date:</label>
                                                     <!-- the input bar isnt responsive when window width less than 1198, need to find a fix -->
                                                     <input type="text" id="bookingDate" name="bookingDate" placeholder="Please select date">

@@ -100,7 +100,7 @@
                                             <div class="card-body" id="card-body-text">
                                                 <p class="card-text"><?php echo $listingName; ?></p>
                                                 <p class="card-text"><?php echo $bookingDate; ?></p>
-                                                <p class="card-text lead fs-6">$ <?php echo $listingPrice; ?></p>
+                                                <p class="card-text lead fs-6">S$ <?php echo $listingPrice; ?></p>
                                             </div>
                                             <br>
                                             <button id="paymentFormBtn" class="btn btn-primary float-end" form="ccForm">Place order now</button>
