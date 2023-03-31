@@ -45,8 +45,16 @@
             if ($inputPassword != "" || $inputPasswordConfirm != "" || $inputOldPassword != "") {
                 $_SESSION['modifyCode'] = 2;
                 if ($inputPassword == $inputPasswordConfirm && password_verify($inputOldPassword, $hashPassword)) {
-                    $preparedStatement .= "password = '" . password_hash($inputPassword, PASSWORD_DEFAULT) . "', ";
-                    $_SESSION['modifyCode'] = 1;
+                    $uppercase = preg_match('@[A-Z]@', $inputPassword);
+                    $lowercase = preg_match('@[a-z]@', $inputPassword);
+                    $number    = preg_match('@[0-9]@', $inputPassword);
+
+                    if ($uppercase || $lowercase || $number
+                        || strlen($inputPassword) => 8 || strlen($inputPassword) <= 16) {
+                    } else {
+                        $preparedStatement .= "password = '" . password_hash($inputPassword, PASSWORD_DEFAULT) . "', ";
+                        $_SESSION['modifyCode'] = 1;
+                    }
                 }
             }
             if ($username != $inputUsername && $inputUsername != "") {

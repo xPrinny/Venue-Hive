@@ -41,7 +41,17 @@ if (empty($pwd) || empty($pwd_confirm)) {
         $errorMsg .= "Passwords do not match.<br>";
         $success = false;
     } else {
-        $pwd_hashed = password_hash($pwd, PASSWORD_DEFAULT);
+        $uppercase = preg_match('@[A-Z]@', $pwd);
+        $lowercase = preg_match('@[a-z]@', $pwd);
+        $number    = preg_match('@[0-9]@', $pwd);
+
+        if (!$uppercase || !$lowercase || !$number
+            || strlen($pwd) < 8 || strlen($pwd) > 16) {
+            $errorMsg .= "Password is invalid.<br>";
+            $success = false;
+        } else {
+            $pwd_hashed = password_hash($pwd, PASSWORD_DEFAULT);
+        }
     }
 
     if ($success) {
