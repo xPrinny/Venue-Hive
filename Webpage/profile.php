@@ -120,7 +120,7 @@
 
                                         echo '<div class="p-3">';
                                         echo '<u><a href="#">';
-                                        if ($reviewOwner == $user) {
+                                        if ($reviewOwner == $username) {
                                             echo $recievedUser . '</a></u> | review from Buzzers';
                                         } else {
                                             echo $reviewOwner . '</a></u> | review from Host';
@@ -168,31 +168,36 @@
                                         <div class="col-lg-9">
                                             <p><?php echo $bookingTimestamp?></p>
                                         </div>
-                                        <div class="col-lg-3">
-                                            <button class="btn btn-primary"><?php echo $bookingState?></button>
+                                        <div class="col-lg-3 text-end">
+                                            <button class="btn yellowBorderBtn" style="pointer-events: none;"><?php echo $bookingState?></button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-3">
                                             <img src="<?php echo $listingImg?>" class="card-img-thumbnail mt-3 ms-3">
-                                            <h5 class="card-title mt-1 ms-3"><?php echo $listingName?></h6>
-                                            <h6 class="mt-1 ms-3 mb-3">Posted by: <?php echo $posterUn?></h6>
+                                            <h5 class="card-title mt-1 ms-3"><a href="profile?u=<?php echo $listingName?>" style="color: black;"><?php echo $listingName?></a></h5>
+                                            <h6 class="mt-1 ms-3 mb-3">Posted by: <a href="profile?u=<?php echo $posterUn?>" style="color: black;"><?php echo $posterUn?></a></h6>
                                         </div>
                                         <div class="col-lg-9">
                                             <h4 class="mt-3">Booking Details</h4>
                                             <hr class="me-3">
                                             <h6>Booking Id: <?php echo $bookingId?></h6>
-                                            <h6>Booker Username: <?php echo $bookerUn?></h6>
+                                            <h6>Booker Username: <a href="profile?u=<?php echo $bookerUn?>" style="color: black;"><?php echo $bookerUn?></a></h6>
                                             <h6>Booking Date: <?php echo $bookingDate?></h6>
                                             <div class="row pt-5">
-                                            <div class="col-lg-4"></div>
-                                                <div class="col-lg-3">
+                                                <?php 
+                                                include "utils/checkReviews.php";
+
+                                                if (in_array($bookingId, $writeReviewIds)) {
+                                                ?>
+                                                <div class="col-lg-6">
                                                     <form action="writeReview.php" method="post">
                                                         <input type="hidden" name="bookingIdR" id="bookingIdR" value="<?php echo $bookingId; ?>"/>
                                                         <input type="submit" value="Write Review" class="btn btn-primary">
                                                     </form>
                                                 </div>
-                                                <div class="col-lg-5">
+                                                <?php } ?>
+                                                <div class="col-lg-6">
                                                     <form action="bookingReceipt.php" method="post">
                                                         <input type="hidden" name="bookingId" id="bookingId" value="<?php echo $bookingId; ?>"/>
                                                         <input type="submit" value="View Booking Confirmation" class="btn btn-primary">

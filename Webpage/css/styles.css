@@ -13142,3 +13142,17 @@ li::marker {
   left: 0;
   right: 0;
 }
+
+.yellowBorderBtn {
+  background-color: white;
+  color: black;
+  border: 2px solid #ffbf24;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
