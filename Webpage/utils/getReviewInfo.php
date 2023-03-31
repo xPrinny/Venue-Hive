@@ -1,5 +1,7 @@
 <?php 
-    $stmt = $conn->prepare("SELECT a.*,  b.username AS 'booker', c.username AS 'poster', d.listingName, d.listingPrice, d.imagePath 
+
+    $stmt = $conn->prepare("SELECT a.*,  b.username AS 'booker', b.userId AS 'bookerId', 
+    c.username AS 'poster', c.userId AS 'posterId', d.listingName, d.listingPrice, d.imagePath 
     FROM (((venuehive.bookings a 
     INNER JOIN venuehive.members b on a.bookerId = b.memberId)
     INNER JOIN venuehive.members c on a.posterId = c.memberId)

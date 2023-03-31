@@ -1,5 +1,4 @@
 <?php 
-    include "utils/authCheck.php";
 
     $listingId = $_GET['listingId'];
 

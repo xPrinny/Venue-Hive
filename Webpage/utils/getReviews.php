@@ -1,5 +1,4 @@
 <?php 
-    include "utils/authCheck.php";
 
     // Prepare statement that gets item information
    $stmt = $conn->prepare("SELECT a.memberId, ratingStar, ratingComment, a.username as 'reviewOwner', b.username as 'recievedUser', c.listingName FROM reviews

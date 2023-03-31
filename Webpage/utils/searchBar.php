@@ -1,5 +1,4 @@
 <?php
-    include "utils/authCheck.php";
 
     $filtervalues = $_POST['search'];
     $stmt = $conn->prepare("SELECT * FROM venuehive.listings WHERE valid = 1 AND listingName LIKE '%$filtervalues%' ORDER BY listingName ASC;");
