@@ -67,7 +67,7 @@
                         <div class="card shadow" id="editUserProfile">
                             <div class="card-body" id="updateAccount">
                                 <h5 class="card-title">Update Account</h5>
-                                <hr/>
+                                <hr>
                                 <form id="settingUpdate" action="utils/modifyAccount">
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
@@ -87,7 +87,7 @@
                                     <div class="form-inline">
                                         <div class="form-group col-md-5 mb-3 me-md-5">
                                             <label for="inputPassword" class="mb-2">New Password</label>
-                                            <input type="password" class="form-control"" id="inputPassword" name="inputPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" title="Must contain at least one uppercase and lowercase letter, one number, 8 to 16 characters, and does not contain '<>'." placeholder="New Password">
+                                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])^[^<>\s]{8,16}$" title="Must contain at least one uppercase and lowercase letter, one number, 8 to 16 characters, and does not contain '<>'." placeholder="New Password">
                                         </div>
                                         <div class="form-group col-md-5 mb-2">
                                             <label for="inputPasswordConfirm" class="mb-2">New Password Confirmation</label>
