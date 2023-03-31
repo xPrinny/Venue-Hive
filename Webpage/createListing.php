@@ -23,22 +23,22 @@
                                 <form action="process_listing.php" method="post" class="my-form">
                                 <div class="form-group">
                                     <label for="listingName">Listing Name:</label>
-                                    <input class="form-control" type="text" id="listingName" maxlength="45" name="listingName" placeholder="Enter listing name">
+                                    <input class="form-control" type="text" id="listingName" maxlength="45" name="listingName" placeholder="Enter listing name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="images">Images:</label>
-                                    <input type="file" name="images[]" multiple>
+                                    <input type="file" name="images[]" required multiple>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary" type="submit">Upload Images</button>
                                 </div>                             
                                 <div class="form-group">
                                     <label for="listingPrice">Listing Price:</label>
-                                    <input class="form-control" type="number" id="listingPrice" required step="0.01" name="listingPrice" placeholder="Enter listing price">
+                                    <input class="form-control" type="number" id="listingPrice" required step="0.01" name="listingPrice" placeholder="Enter listing price" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Listing Category:</label>
-                                    <select class="form-control" id="category" name="category">
+                                    <select class="form-control" id="category" name="category" required>
                                         <option value="gaming">Gaming</option>
                                         <option value="cooking">Cooking</option>
                                         <option value="filming">Filming</option>
@@ -47,19 +47,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="listingDescription">Listing Description:</label>
-                                    <textarea class="form-control" id="listingDescription" name="listingDescription" placeholder="Enter listing description" rows="3"></textarea>
+                                    <textarea class="form-control" id="listingDescription" name="listingDescription" placeholder="Enter listing description" rows="3" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="listingLocation">Location:</label>
-                                    <input class="form-control" type="text" id="listingLocation" name="listingLocation" placeholder="Enter listing location">
+                                    <input class="form-control" type="text" id="listingLocation" name="listingLocation" placeholder="Enter listing location" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="listingAddress">Address:</label>
-                                    <input class="form-control" type="text" id="listingAddress" name="listingAddress" placeholder="Enter listing address">
+                                    <input class="form-control" type="text" id="listingAddress" name="listingAddress" placeholder="Enter listing address" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="bookingDate">Booking Dates:</label>
-                                    <input class="form-control" type="text" id="bookingDate" name="bookingDate" placeholder="Select booking dates" readonly>
+                                    <input class="form-control" type="text" id="bookingDate" name="bookingDate" placeholder="Select booking dates" readonly required>
                                 </div>
                                 <script>
                                     flatpickr('#bookingDate', {
@@ -69,7 +69,7 @@
                                 </script>
                                 <div>
                                     <label for="tags">Tags:</label>
-                                    <input class="form-control" type="text" id="tags" name="tags" placeholder="Enter tags" data-bs-role="tagsinput">
+                                    <input class="form-control" type="text" id="tags" name="tags" placeholder="Enter tags" data-bs-role="tagsinput" required>
                                 </div>
                                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                                 <div class="form-group">
