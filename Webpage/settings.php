@@ -21,11 +21,11 @@
 
             if ($success) {
                 include "utils/getUser.php";
-                $firstName = $result["firstName"];
-                $lastName = $result["lastName"];
-                $email = $result["email"];
-                $profilePicture = $result["profilePicture"];
-                $newsletter = $result["newsletter"];
+                $firstName = $row["firstName"];
+                $lastName = $row["lastName"];
+                $email = $row["email"];
+                $profilePicture = $row["profilePicture"];
+                $newsletter = $row["newsletter"];
             }
             $conn->close();
         ?>

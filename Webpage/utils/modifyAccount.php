@@ -16,12 +16,12 @@
             $_SESSION['fromSetting'] = null;
             $_SESSION['modifyCode'] = 1;
             
-            $firstName = $result["firstName"];
-            $lastName = $result["lastName"];
-            $email = $result["email"];
-            $newsletter = $result["newsletter"];
-            $hashPassword = $result["password"];
-            $username = $result['username'];
+            $firstName = $row["firstName"];
+            $lastName = $row["lastName"];
+            $email = $row["email"];
+            $newsletter = $row["newsletter"];
+            $hashPassword = $row["password"];
+            $username = $row['username'];
 
             $inputFirstName = filter_input(INPUT_POST, "inputFirstName", FILTER_SANITIZE_SPECIAL_CHARS);
             $inputLastName = filter_input(INPUT_POST, "inputLastName", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -50,7 +50,7 @@
                     $number    = preg_match('@[0-9]@', $inputPassword);
 
                     if ($uppercase || $lowercase || $number
-                        || strlen($inputPassword) => 8 || strlen($inputPassword) <= 16) {
+                        || strlen($inputPassword) >= 8 || strlen($inputPassword) <= 16) {
                     } else {
                         $preparedStatement .= "password = '" . password_hash($inputPassword, PASSWORD_DEFAULT) . "', ";
                         $_SESSION['modifyCode'] = 1;
