@@ -66,7 +66,7 @@
                                         if($_SESSION['username'] === $username) {
                                     ?>
                                     <div class="col-lg-3">
-                                        <a href="editListing.php?listingId=<?php echo $row['listingId']; ?>" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="editListing" name="editListing">
+                                        <button href="editListing.php?listingId=<?php echo $row['listingId']; ?>" class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" id="editListing" name="editListing">
                                             <span class="d-flex align-items-center">
                                                 <i class="bi bi-pencil-square me-2"></i>
                                                 <span class="small">Edit</span>
