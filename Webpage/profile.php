@@ -119,11 +119,11 @@
                                         $y = 0;
 
                                         echo '<div class="p-3">';
-                                        echo '<u><a href="#">';
+                                        echo '<u><a href="profile?u=';
                                         if ($reviewOwner == $username) {
-                                            echo $recievedUser . '</a></u> | review from Buzzers';
+                                            echo $recievedUser . '">' . $recievedUser . '</a></u> | review from Buzzers';
                                         } else {
-                                            echo $reviewOwner . '</a></u> | review from Host';
+                                            echo $reviewOwner . '">' . $reviewOwner . '</a></u> | review on Host';
                                         }
                                         echo '<br>';
                                         for($x=0; $x<5; $x++) {
@@ -175,7 +175,7 @@
                                     <div class="row">
                                         <div class="col-lg-3">
                                             <img src="<?php echo $listingImg?>" class="card-img-thumbnail mt-3 ms-3">
-                                            <h5 class="card-title mt-1 ms-3"><a href="listing?listingId=<?php echo $listingId?>" style="color: black;"><?php echo $listingName?></a></h5>
+                                            <h5 class="card-title mt-1 ms-3"><a href="profile?u=<?php echo $listingName?>" style="color: black;"><?php echo $listingName?></a></h5>
                                             <h6 class="mt-1 ms-3 mb-3">Posted by: <a href="profile?u=<?php echo $posterUn?>" style="color: black;"><?php echo $posterUn?></a></h6>
                                         </div>
                                         <div class="col-lg-9">
