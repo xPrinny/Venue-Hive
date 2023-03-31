@@ -116,14 +116,16 @@
                                         $reviewOwner = $row["reviewOwner"];
                                         $recievedUser = $row["recievedUser"];
                                         $listingName = $row["listingName"];
+                                        $listingOwnerId = $row["listingOwnerId"];
+                                        $memberId = $row["memberId"];
                                         $y = 0;
 
                                         echo '<div class="p-3">';
                                         echo '<u><a href="profile?u=';
-                                        if ($reviewOwner == $username) {
+                                        if ($memberId != $listingOwnerId) {
                                             echo $recievedUser . '">' . $recievedUser . '</a></u> | review from Buzzers';
                                         } else {
-                                            echo $reviewOwner . '">' . $reviewOwner . '</a></u> | review on Host';
+                                            echo $reviewOwner . '">' . $reviewOwner . '</a></u> | review from Host';
                                         }
                                         echo '<br>';
                                         for($x=0; $x<5; $x++) {
