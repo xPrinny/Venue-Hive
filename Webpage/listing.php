@@ -83,7 +83,7 @@
                                 </div>
                                 <h3 class="font-weight-bold">$<?php echo $listingPrice?></h3>
                                 <hr>
-                                <a href="profile.php?u=<?php echo $userId?>" style="text-decoration: none; color:black">
+                                <a href="profile.php?u=<?php echo $username?>" style="text-decoration: none; color:black">
                                     <h5><?php echo $username?></h5>
                                 </a>
                                 <p><?php echo $listingInfo?></p>
