@@ -51,7 +51,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['location'];?>" id="location_<?php echo preg_replace('/\s+/', '', $row['location']);?>"><?php echo $row['location'];?>
+                                                <input type="checkbox" class="form-check-input listing_check loc-check" value="<?php echo $row['location'];?>" id="location_<?php echo preg_replace('/\s+/', '', $row['location']);?>"><?php echo $row['location'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -67,7 +67,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['category'];?>" id="category_<?php echo preg_replace('/\s+/', '', $row['category']);;?>"><?php echo $row['category'];?>
+                                                <input type="checkbox" class="form-check-input listing_check cat-check" value="<?php echo $row['category'];?>" id="category_<?php echo preg_replace('/\s+/', '', $row['category']);;?>"><?php echo $row['category'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -83,7 +83,7 @@
                                     <li class="list-group-item">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input listing_check" value="<?php echo $row['tag'];?>" id="tag_<?php echo preg_replace('/\s+/', '', $row['tag']);?>"><?php echo $row['tag'];?>
+                                                <input type="checkbox" class="form-check-input listing_check tag-check" value="<?php echo $row['tag'];?>" id="tag_<?php echo preg_replace('/\s+/', '', $row['tag']);?>"><?php echo $row['tag'];?>
                                             </label>
                                         </div>
                                     </li>
@@ -138,7 +138,7 @@
                                                     <p>
                                                         <?php echo $listingDesc;?><br>
                                                     </p>      
-                                                <h5 class="card-title">Price: S$<?php echo $listingPrice;?></h5>
+                                                <h5 class="card-title">Price: <?php echo $listingPrice;?></h5>
                                             </div>
                                             </a>
                                         </div>
@@ -168,9 +168,9 @@
                 $(".listing_check").click(function(){
 
                     var action = 'action';
-                    var location = filteredText('location');
-                    var category = filteredText('category');
-                    var tag = filteredText('tag');
+                    var location = filteredText('loc-check');
+                    var category = filteredText('cat-check');
+                    var tag = filteredText('tag-check');
 
                     $.ajax({
                         url: 'filterListings.php',
@@ -182,30 +182,14 @@
                     });
                 });
 
-                function filteredText(text_id) {
+                function filteredText(text_class) {
                     var filterData = [];
-                    $('#' + text_id + ':checked').each(function() {
+                    $('.' + text_class + ':checked').each(function() {
                         filterData.push($(this).val());
                     });
                     return filterData;
                 }
             });
-            // // Listen for changes in the sort dropdown
-            // document.getElementById("sort-by").addEventListener("change", function() {
-            // // Get the selected sort option
-            // var sortBy = this.value;
-
-            // // Send an AJAX request to the PHP script to get the sorted search results
-            // var xhr = new XMLHttpRequest();
-            // xhr.open("POST", "search.php", true);
-            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            // xhr.onreadystatechange = function() {
-            //     if (xhr.readyState === 4 && xhr.status === 200) {
-            //     document.getElementById("search-results").innerHTML = xhr.responseText;
-            //     }
-            // };
-            // xhr.send("sort=" + sortBy);
-            // });
         </script>
     </body>
 </html>
