@@ -2,10 +2,9 @@
 $errorMsg = "";
 $success = true;
 
-$fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
 if (empty($fname)) {
-    $errorMsg .= "First name is required.<br>";
-    $success = false;
+    $fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
 
 $lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
