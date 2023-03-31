@@ -13144,7 +13144,7 @@ li::marker {
 }
 
 .yellowBorderBtn {
-  background-color: white;
+  background-color: transparent;
   color: black;
   border: 2px solid #ffbf24;
   border-radius: 4px;
