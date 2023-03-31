@@ -12,18 +12,18 @@
     // Loop through the bookings and check for the booking date and review status
     while ($row = mysqli_fetch_assoc($result)) {
         $bookingState = $row['BookingState'];
-        $bookingId = intval($row['bookingId']);
+        $intbookingId = intval($row['bookingId']);
         
         // Check if the booking date has passed
         if ($bookingState === "Completed") {
             
             // Check if the user has already written a review for this booking
-            $query = "SELECT * FROM reviews WHERE reviewOwnerId = $userId AND reviewBookId = $bookingId";
+            $query = "SELECT * FROM reviews WHERE reviewOwnerId = $userId AND reviewBookId = $intbookingId";
             $result2 = mysqli_query($conn, $query);
             
             if (mysqli_num_rows($result2) == 0) {
                 // The user has not written a review yet, so add the booking ID to the array
-                $writeReviewIds[] = $bookingId;
+                $writeReviewIds[] = $intbookingId;
             }
         }
     }
